@@ -1,0 +1,5 @@
+*.so
+*.root
+*.pyc
+*.pkl
+/thesis/figures/.ipynb_checkpoints*

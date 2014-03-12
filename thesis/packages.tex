@@ -1,0 +1,37 @@
+\usepackage[pdftex]{graphicx}
+%\usepackage{a4}
+%\usepackage{parskip}
+\usepackage{amsmath,amssymb,amsfonts,float}
+\usepackage{textcomp}
+\usepackage{layouts}  % to get textwidth print out, nothing else...
+\usepackage[h]{epsfig}
+\usepackage[utf8]{inputenc}
+\usepackage{fancyhdr}
+\usepackage{times}
+\usepackage{color}
+\usepackage[bf]{caption}
+\usepackage{textcomp}
+\usepackage[
+    backend=bibtex,
+    style=numeric,
+    sortlocale=de_DE,
+    natbib=true,
+    url=false, 
+    doi=true,
+    eprint=false
+]{biblatex}
+\addbibresource{bibliography/sources.bib}
+\usepackage[bookmarks,pdfborder={0 0 0}]{hyperref}%" erzeugt ein verlinktes Inhaltsverzeichnis
+\usepackage{booktabs}
+\usepackage{textcomp}
+%\usepackage{mathcomp}
+\usepackage{siunitx} %Very new package for units, only unit: \si{units with \ in front}, units and number: \SI{value}{units}
+\usepackage{subcaption}
+\usepackage{todonotes} %Pkg for missing figures and sidenotes
+\usepackage[english]{babel}
+%\usepackage{lmodern,dsfont} %For the sign for natural numbers
+\usepackage{datatool}
+% needs to be loaded after hyperref:
+\usepackage[toc,xindy,acronym,nonumberlist]{glossaries}
+\usepackage{glossary-mcols}
+\renewcommand*{\glspostdescription}{} % Removes dots at the end of each entry.

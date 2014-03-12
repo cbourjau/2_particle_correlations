@@ -1,0 +1,1383 @@
+% This file was created with JabRef 2.7b.
+% Encoding: UTF-8
+
+@ARTICLE{dEnterria2007,
+  author = {{d'Enterria}, David},
+  title = {{Quark-Gluon Matter}},
+  journal = {J.Phys.},
+  year = {2007},
+  volume = {G34},
+  pages = {S53-S82},
+  note = {general overview QGP},
+  archiveprefix = {arXiv},
+  doi = {10.1088/0954-3899/34/7/S04},
+  eprint = {nucl-ex/0611012},
+  file = {:/home/christian/msc/thesis/thesis/bibliography/quark_gluon_matter.pdf:PDF},
+  primaryclass = {nucl-ex},
+  slaccitation = {%%CITATION = NUCL-EX/0611012;%%}
+}
+
+@ARTICLE{dEnterria2010,
+  author = {David G. {d'Enterria}},
+  title = {{6.4 Jet quenching}},
+  journal = {Landolt B{\"o}rnstein},
+  year = {2010},
+  volume = {23},
+  pages = {471},
+  abstract = {We present a comprehensive review of the physics of hadron and jet
+	production at large transverse momentum in high-energy nucleus-nucleus
+	collisions. Emphasis is put on experimental and theoretical "jet
+	quenching" observables that provide direct information on the (thermo)dynamical
+	properties of hot and dense QCD matter.},
+  adsnote = {Provided by the SAO/NASA Astrophysics Data System},
+  adsurl = {http://adsabs.harvard.edu/abs/2010LanB...23..471D},
+  archiveprefix = {arXiv},
+  doi = {10.1007/978-3-642-01539-7_16},
+  eprint = {0902.2011},
+  file = {:/home/christian/msc/thesis/thesis/bibliography/Jet_quenching_Enterria.pdf:PDF},
+  keywords = {heavy ion collision, quantum chromodynamics, Standard Model, quark-gluon
+	plasma, confinement-deconfinement transition, phase diagram, equation-of-state,
+	jet quenching, jet spectra, fragmentation function},
+  primaryclass = {nucl-ex}
+}
+
+@ARTICLE{Aamodt2011,
+  author = {Aamodt, Kenneth and others},
+  title = {{Centrality dependence of the charged-particle multiplicity density
+	at mid-rapidity in Pb-Pb collisions at $\sqrt{s_{NN}}=2.76$ TeV}},
+  journal = {Phys.Rev.Lett.},
+  year = {2011},
+  volume = {106},
+  pages = {032301},
+  archiveprefix = {arXiv},
+  collaboration = {ALICE Collaboration},
+  comment = {Good introduction, good description of triggers},
+  doi = {10.1103/PhysRevLett.106.032301},
+  eprint = {1012.1657},
+  file = {:/home/christian/msc/thesis/thesis/bibliography/PbPb_centrality.pdf:PDF},
+  primaryclass = {nucl-ex},
+  slaccitation = {%%CITATION = ARXIV:1012.1657;%%}
+}
+
+@ARTICLE{Abelev2013,
+  author = {Abelev, Betty and others},
+  title = {{Transverse Momentum Distribution and Nuclear Modification Factor
+	of Charged Particles in $p$-Pb Collisions at $\sqrt{s_{NN}}=5.02$
+	TeV}},
+  journal = {Phys.Rev.Lett.},
+  year = {2013},
+  volume = {110},
+  pages = {082302},
+  archiveprefix = {arXiv},
+  collaboration = {ALICE Collaboration},
+  doi = {10.1103/PhysRevLett.110.082302},
+  eprint = {1210.4520},
+  primaryclass = {nucl-ex},
+  reportnumber = {CERN-PH-EP-2012-306},
+  slaccitation = {%%CITATION = ARXIV:1210.4520;%%}
+}
+
+@ARTICLE{Abelev2012,
+  author = {Abelev, Betty and others},
+  title = {{Long-range angular correlations on the near and away side in p-Pb
+	collisions at sqrt(sNN) = 5.02 TeV}},
+  year = {2012},
+  archiveprefix = {arXiv},
+  collaboration = { ALICE Collaboration},
+  eprint = {1212.2001},
+  file = {:/home/christian/msc/thesis/thesis/bibliography/1212.2001v2.pdf:PDF},
+  primaryclass = {nucl-ex},
+  reportnumber = {CERN-PH-EP-2012-359},
+  slaccitation = {%%CITATION = ARXIV:1212.2001;%%}
+}
+
+@ARTICLE{Acosta2002,
+  author = {Acosta, D. and Affolder, T. and Akimoto, H. and Albrow, M. G. and
+	Amaral, P. and Ambrose, D. and Amidei, D. and Anikeev, K. and Antos,
+	J. and Apollinari, G. and Arisawa, T. and Artikov, A. and Asakawa,
+	T. and Ashmanskas, W. and Azfar, F. and Azzi-Bacchetta, P. and Bacchetta,
+	N. and Bachacou, H. and Bailey, S. and de Barbaro, P. and Barbaro-Galtieri,
+	A. and Barnes, V. E. and Barnett, B. A. and Baroiant, S. and Barone,
+	M. and Bauer, G. and Bedeschi, F. and Belforte, S. and Bell, W. H.
+	and Bellettini, G. and Bellinger, J. and Benjamin, D. and Bensinger,
+	J. and Beretvas, A. and Berge, J. P. and Berryhill, J. and Bhatti,
+	A. and Binkley, M. and Bisello, D. and Bishai, M. and Blair, R. E.
+	and Blocker, C. and Bloom, K. and Blumenfeld, B. and Blusk, S. R.
+	and Bocci, A. and Bodek, A. and Bolla, G. and Bonushkin, Y. and Bortoletto,
+	D. and Boudreau, J. and Brandl, A. and van den Brink, S. and Bromberg,
+	C. and Brozovic, M. and Brubaker, E. and Bruner, N. and Buckley-Geer,
+	E. and Budagov, J. and Budd, H. S. and Burkett, K. and Busetto, G.
+	and Byon-Wagner, A. and Byrum, K. L. and Cabrera, S. and Calafiura,
+	P. and Campbell, M. and Carithers, W. and Carlson, J. and Carlsmith,
+	D. and Caskey, W. and Castro, A. and Cauz, D. and Cerri, A. and Chan,
+	A. W. and Chang, P. S. and Chang, P. T. and Chapman, J. and Chen,
+	C. and Chen, Y. C. and Cheng, M.-T. and Chertok, M. and Chiarelli,
+	G. and Chirikov-Zorin, I. and Chlachidze, G. and Chlebana, F. and
+	Christofek, L. and Chu, M. L. and Chung, J. Y. and Chung, Y. S. and
+	Ciobanu, C. I. and Clark, A. G. and Colijn, A. P. and Connolly, A.
+	and Convery, M. and Conway, J. and Cordelli, M. and Cranshaw, J.
+	and Culbertson, R. and Dagenhart, D. and D'Auria, S. and DeJongh,
+	F. and Dell'Agnello, S. and Dell'Orso, M. and Demers, S. and Demortier,
+	L. and Deninno, M. and Derwent, P. F. and Devlin, T. and Dittmann,
+	J. R. and Dominguez, A. and Donati, S. and Done, J. and D'Onofrio,
+	M. and Dorigo, T. and Eddy, N. and Einsweiler, K. and Elias, J. E.
+	and Engels, E. and Erbacher, R. and Errede, D. and Errede, S. and
+	Fan, Q. and Fang, H.-C. and Feild, R. G. and Fernandez, J. P. and
+	Ferretti, C. and Field, R. D. and Fiori, I. and Flaugher, B. and
+	Foster, G. W. and Franklin, M. and Freeman, J. and Friedman, J. and
+	Fukui, Y. and Furic, I. and Galeotti, S. and Gallas, A. and Gallinaro,
+	M. and Gao, T. and Garcia-Sciveres, M. and Garfinkel, A. F. and Gatti,
+	P. and Gay, C. and Gerdes, D. W. and Giannetti, P. and Giromini,
+	P. and Glagolev, V. and Glenzinski, D. and Gold, M. and Goldstein,
+	J. and Gorelov, I. and Goshaw, A. T. and Gotra, Y. and Goulianos,
+	K. and Green, C. and Grim, G. and Gris, P. and Grosso-Pilcher, C.
+	and Guenther, M. and Guillian, G. and Guimaraes da Costa, J. and
+	Haas, R. M. and Haber, C. and Hahn, S. R. and Hall, C. and Handa,
+	T. and Handler, R. and Hao, W. and Happacher, F. and Hara, K. and
+	Hardman, A. D. and Harris, R. M. and Hartmann, F. and Hatakeyama,
+	K. and Hauser, J. and Heinrich, J. and Heiss, A. and Herndon, M.
+	and Hill, C. and Hocker, A. and Hoffman, K. D. and Hollebeek, R.
+	and Holloway, L. and Huffman, B. T. and Hughes, R. and Huston, J.
+	and Huth, J. and Ikeda, H. and Incandela, J. and Introzzi, G. and
+	Ivanov, A. and Iwai, J. and Iwata, Y. and James, E. and Jones, M.
+	and Joshi, U. and Kambara, H. and Kamon, T. and Kaneko, T. and Karagoz
+	Unel, M. and Karr, K. and Kartal, S. and Kasha, H. and Kato, Y. and
+	Keaffaber, T. A. and Kelley, K. and Kelly, M. and Khazins, D. and
+	Kikuchi, T. and Kilminster, B. and Kim, B. J. and Kim, D. H. and
+	Kim, H. S. and Kim, M. J. and Kim, S. B. and Kim, S. H. and Kim,
+	Y. K. and Kirby, M. and Kirk, M. and Kirsch, L. and Klimenko, S.
+	and Koehn, P. and Kondo, K. and Konigsberg, J. and Korn, A. and Korytov,
+	A. and Kovacs, E. and Kroll, J. and Kruse, M. and Kuhlmann, S. E.
+	and Kurino, K. and Kuwabara, T. and Laasanen, A. T. and Lai, N. and
+	Lami, S. and Lammel, S. and Lancaster, J. and Lancaster, M. and Lander,
+	R. and Lath, A. and Latino, G. and LeCompte, T. and Lee, K. and Leone,
+	S. and Lewis, J. D. and Lindgren, M. and Liss, T. M. and Liu, J.
+	B. and Liu, Y. C. and Litvintsev, D. O. and Lobban, O. and Lockyer,
+	N. S. and Loken, J. and Loreti, M. and Lucchesi, D. and Lukens, P.
+	and Lusin, S. and Lyons, L. and Lys, J. and Madrak, R. and Maeshima,
+	K. and Maksimovic, P. and Malferrari, L. and Mangano, M. and Mariotti,
+	M. and Martignon, G. and Martin, A. and Matthews, J. A. J. and Mazzanti,
+	P. and McFarland, K. S. and McIntyre, P. and Menguzzato, M. and Menzione,
+	A. and Merkel, P. and Mesropian, C. and Meyer, A. and Miao, T. and
+	Miller, R. and Miller, J. S. and Minato, H. and Miscetti, S. and
+	Mishina, M. and Mitselmakher, G. and Miyazaki, Y. and Moggi, N. and
+	Moore, E. and Moore, R. and Morita, Y. and Moulik, T. and Mulhearn,
+	M. and Mukherjee, A. and Muller, T. and Munar, A. and Murat, P. and
+	Murgia, S. and Nachtman, J. and Nagaslaev, V. and Nahn, S. and Nakada,
+	H. and Nakano, I. and Nelson, C. and Nelson, T. and Neu, C. and Neuberger,
+	D. and Newman-Holmes, C. and Ngan, C.-Y. P. and Niu, H. and Nodulman,
+	L. and Nomerotski, A. and Oh, S. H. and Oh, Y. D. and Ohmoto, T.
+	and Ohsugi, T. and Oishi, R. and Okusawa, T. and Olsen, J. and Orejudos,
+	W. and Pagliarone, C. and Palmonari, F. and Paoletti, R. and Papadimitriou,
+	V. and Partos, D. and Patrick, J. and Pauletta, G. and Paulini, M.
+	and Paus, C. and Pellett, D. and Pescara, L. and Phillips, T. J.
+	and Piacentino, G. and Pitts, K. T. and Pompos, A. and Pondrom, L.
+	and Pope, G. and Prokoshin, F. and Proudfoot, J. and Ptohos, F. and
+	Pukhov, O. and Punzi, G. and Rakitine, A. and Ratnikov, F. and Reher,
+	D. and Reichold, A. and Renton, P. and Ribon, A. and Riegler, W.
+	and Rimondi, F. and Ristori, L. and Riveline, M. and Robertson, W.
+	J. and Rodrigo, T. and Rolli, S. and Rosenson, L. and Roser, R. and
+	Rossin, R. and Rott, C. and Roy, A. and Ruiz, A. and Safonov, A.
+	and Denis, R. St. and Sakumoto, W. K. and Saltzberg, D. and Sanchez,
+	C. and Sansoni, A. and Santi, L. and Sato, H. and Savard, P. and
+	Savoy-Navarro, A. and Schlabach, P. and Schmidt, E. E. and Schmidt,
+	M. P. and Schmitt, M. and Scodellaro, L. and Scott, A. and Scribano,
+	A. and Sedov, A. and Segler, S. and Seidel, S. and Seiya, Y. and
+	Semenov, A. and Semeria, F. and Shah, T. and Shapiro, M. D. and Shepard,
+	P. F. and Shibayama, T. and Shimojima, M. and Shochet, M. and Sidoti,
+	A. and Siegrist, J. and Sill, A. and Sinervo, P. and Singh, P. and
+	Slaughter, A. J. and Sliwa, K. and Smith, C. and Snider, F. D. and
+	Solodsky, A. and Spalding, J. and Speer, T. and Sphicas, P. and Spinella,
+	F. and Spiropulu, M. and Spiegel, L. and Steele, J. and Stefanini,
+	A. and Strologas, J. and Strumia, F. and Stuart, D. and Sumorok,
+	K. and Suzuki, T. and Takano, T. and Takashima, R. and Takikawa,
+	K. and Tamburello, P. and Tanaka, M. and Tannenbaum, B. and Tecchio,
+	M. and Tesarek, R. J. and Teng, P. K. and Terashi, K. and Tether,
+	S. and Thompson, A. S. and Thomson, E. and Thurman-Keup, R. and Tipton,
+	P. and Tkaczyk, S. and Toback, D. and Tollefson, K. and Tollestrup,
+	A. and Tonelli, D. and Toyoda, H. and Trischuk, W. and de Troconiz,
+	J. F. and Tseng, J. and Tsybychev, D. and Turini, N. and Ukegawa,
+	F. and Vaiciulis, T. and Valls, J. and Vejcik, S. and Velev, G. and
+	Veramendi, G. and Vidal, R. and Vila, I. and Vilar, R. and Volobouev,
+	I. and von der Mey, M. and Vucinic, D. and Wagner, R. G. and Wagner,
+	R. L. and Wallace, N. B. and Wan, Z. and Wang, C. and Wang, M. J.
+	and Wang, S. M. and Ward, B. and Waschke, S. and Watanabe, T. and
+	Waters, D. and Watts, T. and Webb, R. and Wenzel, H. and Wester,
+	W. C. and Wicklund, A. B. and Wicklund, E. and Wilkes, T. and Williams,
+	H. H. and Wilson, P. and Winer, B. L. and Winn, D. and Wolbers, S.
+	and Wolinski, D. and Wolinski, J. and Wolinski, S. and Worm, S. and
+	Wu, X. and Wyss, J. and Yao, W. and Yeh, G. P. and Yeh, P. and Yoh,
+	J. and Yosef, C. and Yoshida, T. and Yu, I. and Yu, S. and Yu, Z.
+	and Zanetti, A. and Zetti, F. and Zucchelli, S.},
+  title = {Soft and hard interactions in $p\overline{p}$ collisions at $\sqrt{s}=1800$
+	and 630 GeV},
+  journal = {Phys. Rev. D},
+  year = {2002},
+  volume = {65},
+  pages = {072005},
+  month = {Apr},
+  collaboration = {(CDF Collaboration)},
+  doi = {10.1103/PhysRevD.65.072005},
+  file = {:/home/christian/msc/bibliography/soft_hard.pdf:PDF},
+  issue = {7},
+  numpages = {12},
+  publisher = {American Physical Society},
+  url = {http://link.aps.org/doi/10.1103/PhysRevD.65.072005}
+}
+
+@MISC{Adare2012,
+  author = {Andrew Marshall Adare },
+  title = {{ Harmonic decomposition of two particle angular correlations in
+	Pb-Pb collisions at 2.76 TeV}},
+  howpublished = {\url{https://aliceinfo.cern.ch/Figure/node/2231}},
+  year = {2012},
+  note = {[Online; accessed 8-March-2014]}
+}
+
+@MISC{Adare2012_2d,
+  author = {Andrew Marshall Adare },
+  title = {{ Harmonic decomposition of two particle angular correlations in
+	Pb-Pb collisions at 2.76 TeV}},
+  howpublished = {\url{https://aliceinfo.cern.ch/Figure/node/2229}},
+  year = {2012},
+  note = {[Online; accessed 8-March-2014]}
+}
+
+@ARTICLE{Ali2010,
+  author = {Ali, Ahmed and Hambrock, Christian and Aslam, M. Jamil},
+  title = {Tetraquark Interpretation of the BELLE Data on the Anomalous Resonance},
+  journal = {Phys. Rev. Lett.},
+  year = {2010},
+  volume = {104},
+  pages = {162001},
+  month = {Apr},
+  doi = {10.1103/PhysRevLett.104.162001},
+  issue = {16},
+  numpages = {4},
+  publisher = {American Physical Society},
+  url = {http://link.aps.org/doi/10.1103/PhysRevLett.104.162001}
+}
+
+@ARTICLE{analysis_note,
+  author = {ALICE},
+  title = {Analysis Note},
+  file = {:/home/christian/msc/thesis/thesis/bibliography/2013-Apr-03-analysis_note-dhcppbnote.pdf:PDF},
+  owner = {christian},
+  timestamp = {2014.01.16}
+}
+
+@ARTICLE{ALICECollaboration2012,
+  author = {{ALICE Collaboration}},
+  title = {{Pseudorapidity density of charged particles in p-Pb collisions at
+	sqrt(sNN) = 5.02 TeV}},
+  journal = {ArXiv e-prints},
+  year = {2012},
+  month = oct,
+  abstract = {The charged-particle pseudorapidity density measured over 4 units
+	of pseudorapidity in non-single-diffractive (NSD) p-Pb collisions
+	at a centre-of-mass energy per nucleon pair sqrt(sNN) = 5.02 TeV
+	is presented. The average value at midrapidity is measured to be
+	16.81 \pm 0.71 (syst.), which corresponds to 2.14 \pm 0.17 (syst.)
+	per participating nucleon. This is 16% lower than in NSD pp collisions
+	interpolated to the same collision energy, and 84% higher than in
+	d-Au collisions at sqrt(sNN) = 0.2 TeV. The measured pseudorapidity
+	density in p-Pb collisions is compared to model predictions, and
+	provides new constraints on the description of particle production
+	in high-energy nuclear collisions.},
+  adsnote = {Provided by the SAO/NASA Astrophysics Data System},
+  adsurl = {http://adsabs.harvard.edu/abs/2012arXiv1210.3615A},
+  archiveprefix = {arXiv},
+  eprint = {1210.3615},
+  file = {:/home/christian/msc/thesis/thesis/bibliography/AliceOct2012.pdf:PDF},
+  keywords = {Nuclear Experiment},
+  primaryclass = {nucl-ex}
+}
+
+@ARTICLE{Alver:2010gr,
+  author = {Alver, B. and Roland, G.},
+  title = {{Collision geometry fluctuations and triangular flow in heavy-ion
+	collisions}},
+  journal = {Phys.Rev.},
+  year = {2010},
+  volume = {C81},
+  pages = {054905},
+  abstract = {We introduce the concepts of participant triangularity and triangular
+	flow in heavy-ion collisions, analogous to the definitions of participant
+	eccentricity and elliptic flow. The participant triangularity characterizes
+	the triangular anisotropy of the initial nuclear overlap geometry
+	and arises from event-by-event fluctuations in the participant-nucleon
+	collision points. In studies using a multi-phase transport model
+	(AMPT), a triangular flow signal is observed that is proportional
+	to the participant triangularity and corresponds to a large third
+	Fourier coefficient in two-particle azimuthal correlation functions.
+	Using two-particle azimuthal correlations at large pseudorapidity
+	separations measured by the PHOBOS and STAR experiments, we show
+	that this Fourier component is also present in data. Ratios of the
+	second and third Fourier coefficients in data exhibit similar trends
+	as a function of centrality and transverse momentum as in AMPT calculations.
+	These findings suggest a significant contribution of triangular flow
+	to the ridge and broad away-side features observed in data. Triangular
+	flow provides a new handle on the initial collision geometry and
+	collective expansion dynamics in heavy-ion collisions.},
+  archiveprefix = {arXiv},
+  eprint = {1003.0194},
+  keywords = {angular correlation: two-particle| heavy ion: scattering | geometry:
+	fluctuation | correlation function | transverse momentum | transport
+	theory | elliptic flow | gold | particle flow | STAR | PHOBOS | numerical
+	calculations | 200 GeV-cms/nucleon},
+  primaryclass = {nucl-th},
+  slaccitation = {%%CITATION = ARXIV:1003.0194;%%}
+}
+
+@MISC{cr_epos,
+  author = {Anton Andronic },
+  title = {{Average transverse momentum as a function of charged particle multiplicity
+	data and models +EPOS for pp}},
+  howpublished = {\url{https://aliceinfo.cern.ch/Figure/node/4847}},
+  year = {2013},
+  note = {[Online; accessed 8-March-2014]}
+}
+
+@ARTICLE{ATLASCollaboration2012,
+  author = {{ATLAS Collaboration}},
+  title = {{Observation of Associated Near-side and Away-side Long-range Correlations
+	in sqrt(s\_NN)=5.02 TeV Proton-lead Collisions with the ATLAS Detector}},
+  journal = {ArXiv e-prints},
+  year = {2012},
+  month = dec,
+  abstract = {Two-particle correlations in relative azimuthal angle (Delta-phi)
+	and pseudorapidity (Delta-eta) are measured in sqrt(s_NN) = 5.02
+	TeV p+Pb collisions using the ATLAS detector at the LHC. The measurements
+	are performed using approximately 1 mub^-1 of data as a function
+	of p_T and the transverse energy (SumE_T) summed over 3.1 < eta <
+	4.9 in the direction of the Pb beam. The correlation function, constructed
+	from charged particles, exhibits a long-range (2<|Delta-eta|<5) near-side
+	(Delta-phi ~ 0) correlation that grows rapidly with increasing SumE_T.
+	A long-range away-side (Delta-phi ~ pi) correlation, obtained by
+	subtracting the expected contributions from recoiling dijets and
+	other sources estimated using events with small SumE_T, is found
+	to match the near-side correlation in magnitude, shape (in Delta-eta
+	and Delta-phi) and SumE_T dependence. The resultant Delta-phi correlation
+	is approximately symmetric about pi/2, and is consistent with a cos(2Delta-phi)
+	modulation for all SumE_T ranges and particle p_T. The amplitude
+	of this modulation is comparable in magnitude and p_T dependence
+	to similar modulations observed in heavy-ion collisions, suggestive
+	of final-state collective effects in high multiplicity events.},
+  adsnote = {Provided by the SAO/NASA Astrophysics Data System},
+  adsurl = {http://adsabs.harvard.edu/abs/2012arXiv1212.5198A},
+  archiveprefix = {arXiv},
+  eprint = {1212.5198},
+  file = {:/home/christian/msc/bibliography/atlas2012.pdf:PDF},
+  keywords = {High Energy Physics - Experiment},
+  primaryclass = {hep-ex}
+}
+
+@ARTICLE{Bozek2010,
+  author = {Bozek, Piotr and Wyskiel, Iwona},
+  title = {{Directed flow in ultrarelativistic heavy-ion collisions}},
+  journal = {Phys.Rev.},
+  year = {2010},
+  volume = {C81},
+  pages = {054902},
+  archiveprefix = {arXiv},
+  doi = {10.1103/PhysRevC.81.054902},
+  eprint = {1002.4999},
+  primaryclass = {nucl-th},
+  slaccitation = {%%CITATION = ARXIV:1002.4999;%%}
+}
+
+@ARTICLE{Bozek2013,
+  author = {{Bo{\.z}ek}, P. and {Broniowski}, W.},
+  title = {{Correlations from hydrodynamic flow in pPb collisions}},
+  journal = {Physics Letters B},
+  year = {2013},
+  volume = {718},
+  pages = {1557-1561},
+  month = jan,
+  note = {This paper is cited in Abelev2012 as it explains v_2 and v_3},
+  adsnote = {Provided by the SAO/NASA Astrophysics Data System},
+  adsurl = {http://adsabs.harvard.edu/abs/2013PhLB..718.1557B},
+  archiveprefix = {arXiv},
+  doi = {10.1016/j.physletb.2012.12.051},
+  eprint = {1211.0845},
+  file = {:/home/christian/msc/bibliography/Bozek2012.pdf:PDF},
+  keywords = {Relativistic proton{\ndash}nucleus collisions, Relativistic hydrodynamics,
+	Event-by-event fluctuations, Collective flow},
+  primaryclass = {nucl-th}
+}
+
+@MASTERSTHESIS{Bryngemark,
+  author = {Lene Bryngemark},
+  title = {Charged pion spectra at high pT in pp collisions at (roten ur) S
+	= 900 GeV, measured by the ALICE TPC},
+  school = {Lunds Universitet},
+  file = {:/home/christian/msc/thesis/thesis/bibliography/Rapport_Lene_B_Master.pdf:PDF},
+  owner = {christian},
+  timestamp = {2013.01.21}
+}
+
+@ARTICLE{Casalderrey-Solana2012,
+  author = {Casalderrey-Solana, Jorge and Mehtar-Tani, Yacine and Salgado, Carlos
+	A. and Tywoniuk, Konrad},
+  title = {{New picture of jet quenching dictated by color coherence}},
+  year = {2012},
+  abstract = {We propose a new description of the jet quenching phenomenon observed
+	in nuclear collisions at high energies in which coherent parton branching
+	plays a central role. This picture is based on the appearance of
+	a dynamically generated scale, the jet resolution scale, which controls
+	the transverse resolution power of the medium to simultaneously propagating
+	color probes. Since from the point of view of the medium all partonic
+	jet fragments within this transverse distance act coherently as a
+	single emitter, this scale allows us to rearrange the jet shower
+	into effective emitters. We observe that in the kinematic regime
+	of the LHC, the corresponding characteristic angle is comparable
+	to the typical opening angle of high energy jets such that most of
+	the jet energy is contained within a non-resolvable color coherent
+	inner core. Thus, a sizable fraction of the jets are unresolved,
+	losing energy as a single parton without modifications of their intra-jet
+	structure. This new picture provides a consistent understanding of
+	the present data on reconstructed jet observables and constitute
+	the basis for future developments.},
+  archiveprefix = {arXiv},
+  eprint = {1210.7765},
+  file = {:/home/christian/msc/bibliography/Jet_quenching.pdf:PDF},
+  primaryclass = {hep-ph},
+  reportnumber = {CERN-PH-TH-2012-291, LU-TP-12-37},
+  slaccitation = {%%CITATION = ARXIV:1210.7765;%%}
+}
+
+@MISC{cern_about,
+  author = {CERN},
+  owner = {christian},
+  timestamp = {2013.11.28},
+  url = {http://home.web.cern.ch/about}
+}
+
+@ARTICLE{Chatrchyan2011,
+  author = {Chatrchyan, Serguei and others},
+  title = {{Indications of suppression of excited $\Upsilon$ states in PbPb
+	collisions at $\sqrt{S_{NN}}$ = 2.76 TeV}},
+  journal = {Phys.Rev.Lett.},
+  year = {2011},
+  volume = {107},
+  pages = {052302},
+  archiveprefix = {arXiv},
+  collaboration = {CMS Collaboration},
+  doi = {10.1103/PhysRevLett.107.052302},
+  eprint = {1105.4894},
+  primaryclass = {nucl-ex},
+  reportnumber = {CERN-PH-EP-2011-074, CMS-HIN-11-007},
+  slaccitation = {%%CITATION = ARXIV:1105.4894;%%}
+}
+
+@ARTICLE{CMSCollaborationChatrchyan2013,
+  author = {{CMS Collaboration Chatrchyan}, S. and {Khachatryan}, V. and {Sirunyan},
+	A.~M. and {Tumasyan}, A. and {Adam}, W. and {Aguilo}, E. and {Bergauer},
+	T. and {Dragicevic}, M. and {Er{\"o}}, J. and {Fabjan}, C. and et
+	al.},
+  title = {{Observation of long-range, near-side angular correlations in pPb
+	collisions at the LHC}},
+  journal = {Physics Letters B},
+  year = {2013},
+  volume = {718},
+  pages = {795-814},
+  month = jan,
+  abstract = {Results on two-particle angular correlations for charged particles
+	emitted in pPb collisions at a nucleon-nucleon center-of-mass energy
+	of 5.02 TeV are presented. The analysis uses two million collisions
+	collected with the CMS detector at the LHC. The correlations are
+	studied over a broad range of pseudorapidity, η, and full azimuth,
+	ϕ, as a function of charged particle multiplicity and particle transverse
+	momentum, pT. In high-multiplicity events, a long-range (2<|Δη|<4),
+	near-side (Δϕ≈0) structure emerges in the two-particle Δη-Δϕ correlation
+	functions. This is the first observation of such correlations in
+	proton-nucleus collisions, resembling the ridge-like correlations
+	seen in high-multiplicity pp collisions at s=7 TeV and in AA collisions
+	over a broad range of center-of-mass energies. The correlation strength
+	exhibits a pronounced maximum in the range of pT=1-1.5 GeV/c and
+	an approximately linear increase with charged particle multiplicity
+	for high-multiplicity events. These observations are qualitatively
+	similar to those in pp collisions when selecting the same observed
+	particle multiplicity, while the overall strength of the correlations
+	is significantly larger in pPb collisions.},
+  adsnote = {Provided by the SAO/NASA Astrophysics Data System},
+  adsurl = {http://adsabs.harvard.edu/abs/2013PhLB..718..795C},
+  archiveprefix = {arXiv},
+  doi = {10.1016/j.physletb.2012.11.025},
+  eprint = {1210.5482},
+  file = {:/home/christian/msc/bibliography/Long_range_near_side_CMS.pdf:PDF},
+  primaryclass = {nucl-ex}
+}
+
+@MISC{alice_scheme,
+  author = {ALICE Collaboration},
+  file = {Schema of alice:/home/christian/msc/thesis/thesis/figures/alice.jpg:JPG image},
+  owner = {christian},
+  timestamp = {2013.11.28},
+  url = {http://aliceinfo.cern.ch/Public/en/Chapter2/Chap2InsideAlice-en.html}
+}
+
+@ARTICLE{Collaboration2008,
+  author = {The ALICE Collaboration and K Aamodt and A Abrahantes Quintana and
+	R Achenbach and S Acounis and D Adamová and C Adler and M Aggarwal
+	and F Agnese and G Aglieri Rinella and Z Ahammed and A Ahmad and
+	N Ahmad and S Ahmad and A Akindinov and P Akishin and D Aleksandrov
+	and B Alessandro and R Alfaro and G Alfarone and A Alici and J Alme
+	and T Alt and S Altinpinar and W Amend and C Andrei and Y Andres
+	and A Andronic and G Anelli and M Anfreville and V Angelov and A
+	Anzo and C Anson and T Anticić and V Antonenko and D Antonczyk and
+	F Antinori and S Antinori and P Antonioli and L Aphecetche and H
+	Appelshäuser and V Aprodu and M Arba and S Arcelli and A Argentieri
+	and N Armesto and R Arnaldi and A Arefiev and I Arsene and A Asryan
+	and A Augustinus and T C Awes and J Äysto and M Danish Azmi and S
+	Bablock and A Badalà and S K Badyal and J Baechler and S Bagnasco
+	and R Bailhache and R Bala and A Baldisseri and A Baldit and J Bán
+	and R Barbera and P-L Barberis and J M Barbet and G Barnäfoldi and
+	V Barret and J Bartke and D Bartos and M Basile and V Basmanov and
+	N Bastid and G Batigne and B Batyunya and J Baudot and C Baumann
+	and I Bearden and B Becker and J Belikov and R Bellwied and E Belmont-Moreno
+	and A Belogianni and S Belyaev and A Benato and J L Beney and L Benhabib
+	and F Benotto and S Beolé and I Berceanu and A Bercuci and E Berdermann
+	and Y Berdnikov and C Bernard and R Berny and J D Berst and H Bertelsen
+	and L Betev and A Bhasin and P Baskar and A Bhati and N Bianchi and
+	J Bielčik and J Bielčiková and L Bimbot and G Blanchard and F Blanco
+	and F Blanco and D Blau and C Blume and S Blyth and M Boccioli and
+	A Bogdanov and H Bøggild and M Bogolyubsky and L Boldizsár and M
+	Bombara and C Bombonati and M Bondila and D Bonnet and V Bonvicini
+	and H Borel and F Borotto and V Borshchov and Y Bortoli and O Borysov
+	and S Bose and L Bosisio and M Botje and S Böttger and G Bourdaud
+	and O Bourrion and S Bouvier and A Braem and M Braun and P Braun-Munzinger
+	and L Bravina and M Bregant and G Bruckner and R Brun and E Bruna
+	and O Brunasso and G E Bruno and D Bucher and V Budilov and D Budnikov
+	and H Buesching and P Buncic and M Burns and S Burachas and O Busch
+	and J Bushop and X Cai and H Caines and F Calaon and M Caldogno and
+	I Cali and P Camerini and R Campagnolo and M Campbell and X Cao and
+	G P Capitani and G Cara Romeo and M Cardenas-Montes and H Carduner
+	and F Carena and W Carena and P Cariola and F Carminati and J Casado
+	and A Casanova Diaz and M Caselle and J Castillo Castellanos and
+	J Castor and V Catanescu and E Cattaruzza and D Cavazza and P Cerello
+	and S Ceresa and V Černý and V Chambert and S Chapeland and A Charpy
+	and D Charrier and M Chartoire and J L Charvet and S Chattopadhyay
+	and S Chattopadhyay and V Chepurnov and S Chernenko and M Cherney
+	and C Cheshkov and B Cheynis and P Chochula and E Chiavassa and V
+	Chibante Barroso and J Choi and P Christakoglou and P Christiansen
+	and C Christensen and O A Chykalov and C Cicalo and L Cifarelli-Strolin
+	and M Ciobanu and F Cindolo and C Cirstoiu and O Clausse and J Cleymans
+	and O Cobanoglu and J-P Coffin and S Coli and A Colla and C Colledani
+	and C Combaret and M Combet and M Comets and G Conesa Balbastre and
+	Z Conesa del Valle and G Contin and J Contreras and T Cormier and
+	F Corsi and P Cortese and F Costa and E Crescio and P Crochet and
+	E Cuautle and J Cussonneau and M Dahlinger and A Dainese and H H
+	Dalsgaard and L Daniel and I Das and T Das and A Dash and R Da Silva
+	and M Davenport and H Daues and A De Caro and G de Cataldo and J
+	De Cuveland and A De Falco and M de Gaspari and P de Girolamo and
+	J de Groot and D De Gruttola and A De Haas and N De Marco and S De
+	Pasquale and P De Remigis and D de Vaux and G Decock and H Delagrange
+	and M Del Franco and G Dellacasa and C Dell'Olio and D Dell'Olio
+	and A Deloff and V Demanov and E Dénes and G D'Erasmo and D Derkach
+	and A Devaux and D Di Bari and A Di Bartelomen and C Di Giglio and
+	S Di Liberto and A Di Mauro and P Di Nezza and M Dialinas and L Diaz
+	and R Díaz Valdes and T Dietel and R Dima and H Ding and C Dinca
+	and R Divià and V Dobretsov and A Dobrin and B Doenigus and T Dobrowolski
+	and I Domínguez and M Dorn and S Drouet and A E Dubey and L Ducroux
+	and F Dumitrache and E Dumonteil and P Dupieux and V Duta and A Dutta
+	Majumdar and M Dutta Majumdar and Th Dyhre and L Efimov and A Efremov
+	and D Elia and D Emschermann and C Engster and A Enokizono and B
+	Espagnon and M Estienne and A Evangelista and D Evans and S Evrard
+	and C W Fabjan and D Fabris and J Faivre and D Falchieri and A Fantoni
+	and R Farano and R Fearick and O Fedorov and V Fekete and D Felea
+	and G Feofilov and A Férnandez Téllez and A Ferretti and F Fichera
+	and S Filchagin and E Filoni and C Finck and R Fini and E M Fiore
+	and D Flierl and M Floris and Z Fodor and Y Foka and S Fokin and
+	P Force and F Formenti and E Fragiacomo and M Fragkiadakis and D
+	Fraissard and A Franco and M Franco and U Frankenfeld and U Fratino
+	and S Fresneau and A Frolov and U Fuchs and J Fujita and C Furget
+	and M Furini and M Fusco Girard and J-J Gaardhøje and A Gabrielli
+	and S Gadrat and M Gagliardi and A Gago and L Gaido and A Gallas
+	Torreira and M Gallio and E Gandolfi and P Ganoti and M Ganti and
+	J Garabatos and A Garcia Lopez and L Garizzo and L Gaudichet and
+	R Gemme and M Germain and A Gheata and M Gheata and B Ghidini and
+	P Ghosh and G Giolu and G Giraudo and P Giubellino and R Glasow and
+	P Glässel and E G Ferreiro and C Gonzalez Gutierrez and L H Gonzales-Trueba
+	and S Gorbunov and Y Gorbunov and H Gos and J Gosset and S Gotovac
+	and H Gottschlag and D Gottschalk and V Grabski and T Grassi and
+	H Gray and O Grebenyuk and K Grebieszkow and C Gregory and C Grigoras
+	and N Grion and V Grigoriev and A Grigoryan and C Grigoryan and S
+	Grigoryan and Y Grishuk and P Gros and J Grosse-Oetringhaus and J-Y
+	Grossiord and R Grosso and B Grynyov and C Guarnaccia and F Guber
+	and F Guerin and R Guernane and M Guerzoni and A Guichard and M Guida
+	and G Guilloux and H Gulkanyan and K Gulbrandsen and T Gunji and
+	A Gupta and V Gupta and H-A Gustafsson and H Gutbrod and C Hadjidakis
+	and M Haiduc and G Hamar and H Hamagaki and J Hamblen and J C Hansen
+	and P Hardy and D Hatzifotiadou and J W Harris and M Hartig and A
+	Harutyunyan and A Hayrapetyan and D Hasch and D Hasegan and J Hehner
+	and N Heine and M Heinz and H Helstrup and A Herghelegiu and S Herlant
+	and G Herrera Corral and N Herrmann and K Hetland and P Hille and
+	H Hinke and B Hippolyte and M Hoch and H Hoebbel and H Hoedlmoser
+	and T Horaguchi and M Horner and P Hristov and I Hřivnáčová and S
+	Hu and C Hu Guo and T Humanic and A Hurtado and D S Hwang and J C
+	Ianigro and M Idzik and S Igolkin and R Ilkaev and I Ilkiv and M
+	Imhoff and P G Innocenti and E Ionescu and M Ippolitov and M Irfan
+	and C Insa and M Inuzuka and C Ivan and A Ivanov and M Ivanov and
+	V Ivanov and P Jacobs and A Jacholkowski and L Jančurová and R Janik
+	and M Jasper and C Jena and L Jirden and D P Johnson and G T Jones
+	and C Jorgensen and F Jouve and P Jovanović and A Junique and A Jusko
+	and H Jung and W Jung and K Kadija and A Kamal and R Kamermans and
+	S Kapusta and A Kaidalov and V Kakoyan and S Kalcher and E Kang and
+	J Kapitan and V Kaplin and K Karadzhev and O Karavichev and T Karavicheva
+	and E Karpechev and K Karpio and A Kazantsev and U Kebschull and
+	R Keidel and M Mohsin Khan and A Khanzadeev and Y Kharlov and D Kikola
+	and B Kileng and D Kim and D S Kim and D W Kim and H N Kim and J
+	S Kim and S Kim and J B Kinson and S K Kiprich and I Kisel and S
+	Kiselev and A Kisiel and T Kiss and V Kiworra and J Klay and C Klein
+	Bösing and M Kliemant and A Klimov and A Klovning and A Kluge and
+	R Kluit and S Kniege and R Kolevatov and T Kollegger and A Kolojvari
+	and V Kondratiev and E Kornas and E Koshurnikov and I Kotov and R
+	Kour and M Kowalski and S Kox and K Kozlov and I Králik and F Kramer
+	and I Kraus and A Kravčáková and T Krawutschke and M Krivda and E
+	Kryshen and Y Kucheriaev and A Kugler and C Kuhn and P Kuijer and
+	L Kumar and N Kumar and P Kumpumaeki and A Kurepin and A N Kurepin
+	and S Kushpil and V Kushpil and M Kutovsky and H Kvaerno and M Kweon
+	and J-C Labbé and F Lackner and P Ladron de Guevara and V Lafage
+	and P La Rocca and M Lamont and C Lara and D T Larsen and G Laurenti
+	and C Lazzeroni and Y Le Bornec and N Le Bris and C Le Gailliard
+	and V Lebedev and J Lecoq and K S Lee and S C Lee and F Lefévre and
+	I Legrand and T Lehmann and L Leistam and P Lenoir and V Lenti and
+	H Leon and I Leon Monzon and P Lévai and Q Li and X Li and F Librizzi
+	and R Lietava and N Lindegaard and V Lindenstruth and C Lippmann
+	and M Lisa and O M Listratenko and F Littel and Y Liu and J Lo and
+	V Lobanov and V Loginov and M López Noriega and R López-Ramírez and
+	E López Torres and P M Lorenzo and G Løvhøiden and S Lu and W Ludolphs
+	and M Lunardon and L Luquin and S Lusso and J-R Lutz and M Luvisetto
+	and V Lyapin and A Maevskaya and C Magureanu and A Mahajan and S
+	Majahan and T Mahmoud and A Mairani and D Mahapatra and A Makarov
+	and I Makhlyueva and M Malek and T Malkiewicz and D Mal'Kevich and
+	P Malzacher and A Mamonov and C Manea and L K Mangotra and D Maniero
+	and V Manko and F Manso and V Manzari and Y Mao and A Marcel and
+	S Marchini and J Mareš and G V Margagliotti and A Margotti and A
+	Marin and J-C Marin and D Marras and P Martinengo and M I Martínez
+	and A Martinez-Davalos and G Martínez Garcia and S Martini and A
+	Marzari Chiesa and C Marzocca and S Masciocchi and M Masera and M
+	Masetti and N I Maslov and A Masoni and F Massera and M Mast and
+	A Mastroserio and Z L Matthews and B Mayer and G Mazza and M D Mazzaro
+	and A Mazzoni and F Meddi and E Meleshko and A Menchaca-Rocha and
+	S Meneghini and M Meoni and J Mercado Perez and P Mereu and O Meunier
+	and Y Miake and A Michalon and R Michinelli and N Miftakhov and M
+	Mignone and K Mikhailov and J Milosevic and Y Minaev and F Minafra
+	and A Mischke and D Miśkowiec and V Mitsyn and C Mitu and B Mohanty
+	and D Moisa and L Molnar and M Mondal and N Mondal and L Montaño
+	Zetina and M Monteno and M Morando and M Morel and S Moretto and
+	Th Morhardt and A Morsch and T Moukhanova and M Mucchi and V Muccifora
+	and E Mudnic and H Müller and W Müller and J Munoz and D Mura and
+	L Musa and J F Muraz and A Musso and R Nania and B Nandi and E Nappi
+	and F Navach and S Navin and T Nayak and S Nazarenko and G Nazarov
+	and L Nellen and F Nendaz and A Nianine and M Nicassio and B S Nielsen
+	and S Nikolaev and V Nikolic and S Nikulin and V Nikulin and B Nilsen
+	and M Nitti and F Noferini and P Nomokonov and G Nooren and F Noto
+	and D Nouais and A Nyiri and J Nystrand and G Odyniec and H Oeschler
+	and M Oinonen and M Oldenburg and I Oleks and E K Olsen and V Onuchin
+	and C Oppedisano and F Orsini and A Ortiz-Velázquez and C Oskamp
+	and A Oskarsson and F Osmic and L Österman and I Otterlund and G
+	Ovrebekk and K Oyama and M Pachr and P Pagano and G Paić and C Pajares
+	and S Pal and S Pal and G Pálla and A Palmeri and G Pancaldi and
+	R Panse and A Pantaleo and G S Pappalardo and B Pastirčák and C Pastore
+	and O Patarakin and V Paticchio and G Patimo and A Pavlinov and T
+	Pawlak and T Peitzmann and Y Pénichot and A Pepato and H Pereira
+	and D Peresunko and C Perez and J Perez Griffo and D Perini and D
+	Perrino and W Peryt and A Pesci and V Peskov and Y Pestov and A J
+	Peters and V Petráček and A Petridis and M Petris and V Petrov and
+	V Petrov and M Petrovici and J Peyré and S Piano and A Piccotti and
+	P Pichot and C Piemonte and M Pikna and R Pilastrini and P Pillot
+	and O Pinazza and B Pini and L Pinsky and V Pinto Morais and V Pismennaya
+	and F Piuz and R Platt and M Ploskon and S Plumeri and J Pluta and
+	T Pocheptsov and P Podesta and F Poggio and M Poghosyan and T Poghosyan
+	and K Polák and B Polichtchouk and P Polozov and V Polyakov and B
+	Pommeresch and F Pompei and A Pop and S Popescu and F Posa and V
+	Pospíšil and B Potukuchi and J Pouthas and S Prasad and R Preghenella
+	and F Prino and L Prodan and G Prono and M A Protsenko and C A Pruneau
+	and A Przybyla and I Pshenichnov and G Puddu and P Pujahari and A
+	Pulvirenti and A Punin and V Punin and J Putschke and J Quartieri
+	and E Quercigh and I Rachevskaya and A Rachevski and A Rademakers
+	and S Radomski and A Radu and J Rak and L Ramello and R Raniwala
+	and S Raniwala and O B Rasmussen and J Rasson and V Razin and K Read
+	and J Real and K Redlich and C Reichling and C Renard and G Renault
+	and R Renfordt and A R Reolon and A Reshetin and J-P Revol and K
+	Reygers and H Ricaud and L Riccati and R A Ricci and M Richter and
+	P Riedler and L M Rigalleau and F Riggi and W Riegler and E Rindel
+	and J Riso and A Rivetti and M Rizzi and V Rizzi and M Rodriguez
+	Cahuantzi and K Røed and D Röhrich and S Román-López and M Romanato
+	and R Romita and F Ronchetti and P Rosinsky and P Rosnet and S Rossegger
+	and A Rossi and V Rostchin and F Rotondo and F Roukoutakis and S
+	Rousseau and C Roy and D Roy and P Roy and L Royer and G Rubin and
+	A Rubio and R Rui and I Rusanov and G Russo and V Ruuskanen and E
+	Ryabinkin and A Rybicki and S Sadovsky and K Šafařík and R Sahoo
+	and J Saini and P Saiz and S Salur and S Sambyal and V Samsonov and
+	L Šándor and A Sandoval and H Sann and J-C Santiard and R Santo and
+	R Santoro and G Sargsyan and P Saturnini and E Scapparone and F Scarlassara
+	and B Schackert and C Schiaua and R Schicker and T Schioler and J
+	D Schippers and C Schmidt and H Schmidt and R Schneider and K Schossmaier
+	and J Schukraft and Y Schutz and K Schwarz and K Schweda and E Schyns
+	and G Scioli and E Scomparin and H Snow and S Sedykh and G Segato
+	and S Sellitto and F Semeria and S Senyukov and H Seppänen and S
+	Serci and L Serkin and S Serra and T Sesselmann and A Sevcenco and
+	I Sgura and G Shabratova and R Shahoyan and E Sharkov and S Sharma
+	and K Shigaki and K Shileev and P Shukla and A Shurygin and M Shurygina
+	and Y Sibiriak and E Siddi and T Siemiarczuk and M H Sigward and
+	A Silenzi and D Silvermyr and R Silvestri and E Simili and V Simion
+	and R Simon and L Simonetti and R Singaraju and V Singhal and B Sinha
+	and T Sinha and M Siska and B Sitár and M Sitta and B Skaali and
+	P Skowronski and M Slodkowski and N Smirnov and L Smykov and R Snellings
+	and W Snoeys and C Soegaard and J Soerensen and O Sokolov and A Soldatov
+	and A Soloviev and H Soltveit and R Soltz and W Sommer and C Soos
+	and F Soramel and S Sorensen and D Soyk and M Spyropoulou-Stassinaki
+	and J Stachel and F Staley and I Stan and A Stavinskiy and J Steckert
+	and G Stefanini and G Stefanek and T Steinbeck and H Stelzer and
+	E Stenlund and D Stocco and M Stockmeier and G Stoicea and P Stolpovsky
+	and P Strmeň and J S Stutzmann and G Su and T Sugitate and M Šumbera
+	and C Suire and T Susa and K Sushil Kumar and D Swoboda and J Symons
+	and I Szarka and A Szostak and M Szuba and P Szymanski and M Tadel
+	and C Tagridis and L Tan and D Tapia Takaki and H Taureg and A Tauro
+	and M Tavlet and G Tejeda Munoz and J Thäder and R Tieulent and P
+	Timmer and T Tolyhy and N Topilskaya and C Torcato de Matos and H
+	Torii and L Toscano and F Tosello and A Tournaire and T Traczyk and
+	G Tröger and W Tromeur and D Truesdale and W Trzaska and G Tsiledakis
+	and E Tsilis and A Tsvetkov and M Turcato and R Turrisi and M Tuveri
+	and T Tveter and H Tydesjo and L Tykarski and K Tywoniuk and E Ugolini
+	and K Ullaland and J Urbán and G M Urciuoli and G L Usai and M Usseglio
+	and A Vacchi and M Vala and F Valiev and P Vande Vyvre and A Van
+	Den Brink and N Van Eijndhoven and N Van Der Kolk and M van Leeuwen
+	and L Vannucci and S Vanzetto and J-P Vanuxem and M A Vargas and
+	R Varma and A Vascotto and A Vasiliev and M Vassiliou and P Vasta
+	and V Vechernin and M Venaruzzo and E Vercellin and S Vergara and
+	W Verhoeven and F Veronese and I Vetlitskiy and R Vernet and V Victorov
+	and L Vidak and G Viesti and O Vikhlyantsev and Z Vilakazi and O
+	Villalobos Baillie and A Vinogradov and L Vinogradov and Y Vinogradov
+	and T Virgili and Y Viyogi and A Vodopianov and G Volpe and D Vranic
+	and J Vrláková and B Vulpescu and C Wabnitz and V Wagner and L Wallet
+	and R Wan and Y Wang and Y Wang and R Wheadon and R Weis and Q Wen
+	and J Wessels and J Westergaard and J Wiechula and A Wiesenaecker
+	and J Wikne and A Wilk and G Wilk and C Williams and N Willis and
+	B Windelband and R Witt and H Woehri and K Wyllie and C Xu and C
+	Yang and H Yang and F Yermia and Z Yin and Z Yin and B Yun Ky and
+	I Yushmanov and B Yuting and E Zabrodin and S Zagato and B Zagreev
+	and P Zaharia and A Zalite and G Zampa and C Zampolli and Y Zanevskiy
+	and A Zarochentsev and O Zaudtke and P Závada and H Zbroszczyk and
+	A Zepeda and V Zeter and I Zgura and M Zhalov and D Zhou and S Zhou
+	and G Zhu and A Zichichi and A Zinchenko and G Zinovjev and Y Zoccarato
+	and A Zubarev and A Zucchini and M Zuffa},
+  title = {The ALICE experiment at the CERN LHC},
+  journal = {Journal of Instrumentation},
+  year = {2008},
+  volume = {3},
+  pages = {S08002},
+  number = {08},
+  note = {Very detailed description of the Alice detector},
+  abstract = {ALICE (A Large Ion Collider Experiment) is a general-purpose, heavy-ion
+	detector at the CERN LHC which focuses on QCD, the strong-interaction
+	sector of the Standard Model. It is designed to address the physics
+	of strongly interacting matter and the quark-gluon plasma at extreme
+	values of energy density and temperature in nucleus-nucleus collisions.
+	Besides running with Pb ions, the physics programme includes collisions
+	with lighter ions, lower energy running and dedicated proton-nucleus
+	runs. ALICE will also take data with proton beams at the top LHC
+	energy to collect reference data for the heavy-ion programme and
+	to address several QCD topics for which ALICE is complementary to
+	the other LHC detectors. The ALICE detector has been built by a collaboration
+	including currently over 1000 physicists and engineers from 105 Institutes
+	in 30 countries. Its overall dimensions are 16 × 16 × 26 m 3 with
+	a total weight of approximately 10 000 t. The experiment consists
+	of 18 different detector systems each with its own specific technology
+	choice and design constraints, driven both by the physics requirements
+	and the experimental conditions expected at LHC. The most stringent
+	design constraint is to cope with the extreme particle multiplicity
+	anticipated in central Pb-Pb collisions. The different subsystems
+	were optimized to provide high-momentum resolution as well as excellent
+	Particle Identification (PID) over a broad range in momentum, up
+	to the highest multiplicities predicted for LHC. This will allow
+	for comprehensive studies of hadrons, electrons, muons, and photons
+	produced in the collision of heavy nuclei. Most detector systems
+	are scheduled to be installed and ready for data taking by mid-2008
+	when the LHC is scheduled to start operation, with the exception
+	of parts of the Photon Spectrometer (PHOS), Transition Radiation
+	Detector (TRD) and Electro Magnetic Calorimeter (EMCal). These detectors
+	will be completed for the high-luminosity ion run expected in 2010.
+	This paper describes in detail the detector components as installed
+	for the first data taking in the summer of 2008.},
+  file = {:/home/christian/msc/thesis/thesis/bibliography/ALICE_description.pdf:PDF},
+  url = {http://stacks.iop.org/1748-0221/3/i=08/a=S08002}
+}
+
+@ARTICLE{Cotugno2010,
+  author = {Cotugno, G. and Faccini, R. and Polosa, A.D. and Sabelli, C.},
+  title = {{Charmed Baryonium}},
+  journal = {Phys.Rev.Lett.},
+  year = {2010},
+  volume = {104},
+  pages = {132005},
+  archiveprefix = {arXiv},
+  doi = {10.1103/PhysRevLett.104.132005},
+  eprint = {0911.2178},
+  primaryclass = {hep-ph},
+  slaccitation = {%%CITATION = ARXIV:0911.2178;%%}
+}
+
+@MISC{Cush2014,
+  author = {Cush},
+  title = {{Standard Model of Elementary Particles}},
+  howpublished = {\url{https://en.wikipedia.org/wiki/File:Standard_Model_of_Elementary_Particles.svg}},
+  year = {2014},
+  note = {[Online; accessed 8-March-2014]}
+}
+
+@ARTICLE{Dusling2013,
+  author = {Dusling, Kevin and Venugopalan, Raju},
+  title = {{Comparison of the color glass condensate to dihadron correlations
+	in proton-proton and proton-nucleus collisions}},
+  journal = {Phys.Rev.},
+  year = {2013},
+  volume = {D87},
+  pages = {094034},
+  number = {9},
+  abstract = {We perform a detailed comparison of long range rapidity correlations
+	in the Color Glass Condensate framework to high multiplicity di-hadron
+	data in proton-proton and proton-lead collisions from the CMS, ALICE
+	and ATLAS experiments at the LHC. The overall good agreement thus
+	far of the non-trivial systematics of theory with data is strongly
+	suggestive of gluon saturation and the presence of subtle quantum
+	interference effects between rapidity separated gluons. In particular,
+	the yield of pairs collimated in their relative azimuthal angle dphi∼0,
+	is sensitive to the shape of unintegrated gluon distributions in
+	the hadrons that are renormalization group evolved in rapidity from
+	the beam rapidities to those of the measured hadrons. We present
+	estimates for the collimated di-hadron yield expected in central
+	deuteron-gold collisions at RHIC.},
+  archiveprefix = {arXiv},
+  doi = {10.1103/PhysRevD.87.094034},
+  eprint = {1302.7018},
+  primaryclass = {hep-ph},
+  slaccitation = {%%CITATION = ARXIV:1302.7018;%%}
+}
+
+@ARTICLE{Dusling2012,
+  author = {{Dusling}, K. and {Venugopalan}, R.},
+  title = {{Explanation of systematics of CMS p+Pb high multiplicity di-hadron
+	data at \$$\backslash$sqrt$\{$s$\}$\_$\{$$\backslash$rm NN$\}$ =
+	5.02\$ TeV}},
+  journal = {ArXiv e-prints},
+  year = {2012},
+  month = nov,
+  abstract = {In a recent article (arXiv:1210.3890), we showed that high multiplicity
+	di-hadron proton- proton (p+p) data from the CMS experiment are in
+	excellent agreement with computations in the Color Glass Condensate
+	(CGC) Effective Field Theory (EFT). This agreement of the theory
+	with several hundred data points provides a non-trivial description
+	of both nearside ("ridge") and away-side azimuthal collimations of
+	long range rapidity correlations in p+p collisions. Our prediction
+	in arXiv:1210.3890 for proton-lead (p+Pb) collisions is consistent
+	with results from the recent CMS p+Pb run at $\sqrt{s}_{\rm NN} =
+	5.02$ TeV for the largest track multiplicity $N_{\rm track}\sim 40$
+	we considered. The CMS p+Pb data shows the following striking features:
+	i) a strong dependence of the ridge yield on $N_{\rm track}$, with
+	a significantly larger signal than in p+p for the same $N_{\rm track}$,
+	ii) a stronger $p_T$ dependence than in p+p for large $N_{\rm track}$,
+	and iii) a nearside collimation for large $N_{\rm track}$ comparable
+	to the awayside for the lower $p_T = p_{T}^{\rm trig.}=p_{T}^{\rm
+	assoc.}$ di-hadron windows. We show here that these systematic features
+	of the CMS p+Pb di-hadron data are all described by the CGC (with
+	parameters fixed by the p+p data) when we extend our prediction in
+	arXiv:1210.3890 to rarer high multiplicity events. We also predict
+	the azimuthally collimated yield for yet unpublished windows in the
+	$p_{T}^{\rm trig.}$ and $p_{T}^{\rm assoc.}$ matrix.},
+  adsnote = {Provided by the SAO/NASA Astrophysics Data System},
+  adsurl = {http://adsabs.harvard.edu/abs/2012arXiv1211.3701D},
+  archiveprefix = {arXiv},
+  comment = {cited in Abelev2012 as a model for the observed behaviour},
+  eprint = {1211.3701},
+  file = {:/home/christian/msc/thesis/thesis/bibliography/Dusling2012.pdf:PDF},
+  keywords = {High Energy Physics - Phenomenology, High Energy Physics - Experiment,
+	Nuclear Experiment, Nuclear Theory},
+  primaryclass = {hep-ph}
+}
+
+@ARTICLE{Englert1964,
+  author = {Englert, F. and Brout, R.},
+  title = {Broken Symmetry and the Mass of Gauge Vector Mesons},
+  journal = {Phys. Rev. Lett.},
+  year = {1964},
+  volume = {13},
+  pages = {321--323},
+  month = {Aug},
+  doi = {10.1103/PhysRevLett.13.321},
+  issue = {9},
+  numpages = {0},
+  publisher = {American Physical Society},
+  url = {http://link.aps.org/doi/10.1103/PhysRevLett.13.321}
+}
+
+@ARTICLE{Gelis2013,
+  author = {Gelis, F.},
+  title = {{Color Glass Condensate and Glasma}},
+  journal = {Int.J.Mod.Phys.},
+  year = {2013},
+  volume = {A28},
+  pages = {1330001},
+  archiveprefix = {arXiv},
+  doi = {10.1142/S0217751X13300019},
+  eprint = {1211.3327},
+  file = {:/home/christian/msc/thesis/thesis/bibliography/cgc_lectures.pdf:PDF},
+  primaryclass = {hep-ph},
+  reportnumber = {IPHT-T12-121},
+  slaccitation = {%%CITATION = ARXIV:1211.3327;%%}
+}
+
+@MISC{Grosse2012_cent,
+  author = {Jan Fiete Grosse-Oetringhaus},
+  title = {{Associated yield per trigger particle, 0-20\%}},
+  howpublished = {\url{https://aliceinfo.cern.ch/Figure/node/3991}},
+  year = {2012},
+  note = {[Online; accessed 8-March-2014]}
+}
+
+@MISC{Grosse2012_peri,
+  author = {Jan Fiete Grosse-Oetringhaus},
+  title = {{Associated yield per trigger particle, 60-100\%}},
+  howpublished = {\url{https://aliceinfo.cern.ch/Figure/node/3990}},
+  year = {2012},
+  note = {[Online; accessed 8-March-2014]}
+}
+
+@MISC{Grosse2012_sub,
+  author = {Jan Fiete Grosse-Oetringhaus},
+  title = {{Associated yield per trigger particle, 0-20\% minus 60-100\%}},
+  howpublished = {\url{https://aliceinfo.cern.ch/Figure/node/3994}},
+  year = {2012},
+  note = {[Online; accessed 8-March-2014]}
+}
+
+@ARTICLE{Gustafson2009,
+  author = {Gustafson, Gosta},
+  title = {{Multiple Interactions, Saturation, and Final States in pp Collisions
+	and DIS}},
+  journal = {Acta Phys.Polon.},
+  year = {2009},
+  volume = {B40},
+  pages = {1981-1996},
+  archiveprefix = {arXiv},
+  eprint = {0905.2492},
+  primaryclass = {hep-ph},
+  slaccitation = {%%CITATION = ARXIV:0905.2492;%%}
+}
+
+@ARTICLE{Higgs1964,
+  author = {Higgs, Peter W.},
+  title = {Broken Symmetries and the Masses of Gauge Bosons},
+  journal = {Phys. Rev. Lett.},
+  year = {1964},
+  volume = {13},
+  pages = {508--509},
+  month = {Oct},
+  doi = {10.1103/PhysRevLett.13.508},
+  issue = {16},
+  numpages = {0},
+  publisher = {American Physical Society},
+  url = {http://link.aps.org/doi/10.1103/PhysRevLett.13.508}
+}
+
+@CONFERENCE{Loizides2013,
+  author = {Constantin Loizides},
+  title = {Recent results from pPb collisions at the LHC},
+  year = {2013},
+  month = {04},
+  organization = {Bereley Lab},
+  file = {:/home/christian/msc/bibliography/pPb_summary_with_DHC.pdf:PDF},
+  keywords = {DHC},
+  owner = {christian},
+  timestamp = {2013.09.06}
+}
+
+@MISC{Manglunki2001,
+  author = {D. Manglunki},
+  month = {05},
+  year = {2001},
+  owner = {christian},
+  timestamp = {2013.11.28},
+  url = {http://ps-div.web.cern.ch/ps-div/PSComplex/accelerators.pdf}
+}
+
+@ARTICLE{Manly2006,
+  author = {Manly, S. and others},
+  title = {{System size, energy and pseudorapidity dependence of directed and
+	elliptic flow at RHIC}},
+  journal = {Nucl.Phys.},
+  year = {2006},
+  volume = {A774},
+  pages = {523-526},
+  archiveprefix = {arXiv},
+  collaboration = {PHOBOS Collaboration},
+  doi = {10.1016/j.nuclphysa.2006.06.079},
+  eprint = {nucl-ex/0510031},
+  primaryclass = {nucl-ex},
+  slaccitation = {%%CITATION = NUCL-EX/0510031;%%}
+}
+
+@ARTICLE{Milano2013,
+  author = {Milano, L.},
+  title = {{Two-particle correlations in p-Pb collisions at the LHC with ALICE}},
+  year = {2013},
+  archiveprefix = {arXiv},
+  eprint = {1309.3457},
+  primaryclass = {hep-ex},
+  slaccitation = {%%CITATION = ARXIV:1309.3457;%%}
+}
+
+@ARTICLE{Morsch2013,
+  author = {Morsch, Andreas},
+  title = {{p-Pb Results from ALICE with an Emphasis on Centrality Determination}},
+  year = {2013},
+  archiveprefix = {arXiv},
+  collaboration = {ALICE Collaboration},
+  eprint = {1309.5525},
+  file = {:/home/christian/msc/thesis/thesis/bibliography/pPb_centrality.pdf:PDF},
+  primaryclass = {nucl-ex},
+  slaccitation = {%%CITATION = ARXIV:1309.5525;%%}
+}
+
+@ARTICLE{Odom2006,
+  author = {Odom, B. and Hanneke, D. and D'Urso, B. and Gabrielse, G.},
+  title = {New Measurement of the Electron Magnetic Moment Using a One-Electron
+	Quantum Cyclotron},
+  journal = {Phys. Rev. Lett.},
+  year = {2006},
+  volume = {97},
+  pages = {030801},
+  month = {Jul},
+  doi = {10.1103/PhysRevLett.97.030801},
+  file = {:/home/christian/msc/thesis/thesis/figures/g2_measurement.pdf:PDF},
+  issue = {3},
+  numpages = {4},
+  publisher = {American Physical Society},
+  url = {http://link.aps.org/doi/10.1103/PhysRevLett.97.030801}
+}
+
+@ARTICLE{Ortiz2013,
+  author = {Ortiz, Antonio and Christiansen, Peter and Cuautle, Eleazar and Maldonado,
+	Ivonne and Paic, Guy},
+  title = {{Color reconnection and flow-like patterns in pp collisions}},
+  journal = {Phys.Rev.Lett.},
+  year = {2013},
+  volume = {111},
+  pages = {042001},
+  archiveprefix = {arXiv},
+  doi = {10.1103/PhysRevLett.111.042001},
+  eprint = {1303.6326},
+  primaryclass = {hep-ph},
+  slaccitation = {%%CITATION = ARXIV:1303.6326;%%}
+}
+
+@ARTICLE{RandolfPohl2010,
+  author = {Randolf Pohl;
+	
+	Aldo Antognini;
+	
+	François Nez;
+	
+	Fernando D. Amaro;
+	
+	François Biraben;
+	
+	João M. R. Cardoso;
+	
+	Daniel S. Covita;
+	
+	Andreas Dax;
+	
+	Satish Dhawan;
+	
+	Luis M. P. Fernandes;
+	
+	Adolf Giesen;
+	
+	Thomas Graf;
+	
+	Theodor W. Hänsch;
+	
+	Paul Indelicato;
+	
+	Lucile Julien;
+	
+	Cheng-Yang Kao;
+	
+	Paul Knowles;
+	
+	Eric-Olivier Le Bigot;
+	
+	Yi-Wei Liu;
+	
+	José A. M. Lopes;
+	
+	Livia Ludhova;
+	
+	Cristina M. B. Monteiro;
+	
+	Françoise Mulhauser;
+	
+	Tobias Nebel;
+	
+	Paul Rabinowitz},
+  title = {The size of the proton},
+  journal = {Nature},
+  year = {2010},
+  volume = {466},
+  pages = {213-216},
+  owner = {christian},
+  timestamp = {2014.03.05}
+}
+
+@ARTICLE{Ravan2013,
+  author = {Shantam Ravan and Prabhat Pujahari and Sidharth Prasad and Claude
+	A. Pruneau},
+  title = {Correcting Correlation Function Measurements},
+  year = {2013},
+  month = nov,
+  abstract = {Correlation functions measured as a function of $\Delta \eta, \Delta
+	\phi$ have emerged as a powerful tool to study the dynamics of particle
+	production in nuclear collisions at high energy. They are however
+	subject, like any other observables, to instrumental effects which
+	must be properly accounted for to extract meaningful physics results.
+	We compare the merits of several techniques used towards measurement
+	of these correlation functions in nuclear collisions. We discuss
+	and distinguish the effects of finite acceptance, and detection efficiency
+	that may vary with collision parameters such as the position of the
+	event in the detector and the instantaneous luminosity of the beam.
+	We focus in particular on instrumental effects which break the factorization
+	of the particle pair detection efficiency, and describe a technique
+	to recover the robustness of correlation observables. We finally
+	introduce a multi-dimensional weight method to correct for efficiencies
+	that vary simultaneously with particle pseudo rapidity, azimuthal
+	angle, transverse momentum, and the collision vertex position. The
+	method can be generalized to account for any number of "event variables"
+	that may break the factorability of the pair efficiency.},
+  comments = {19 pages, 12 figures},
+  eprint = {1311.3915},
+  file = {:/home/christian/Ravan2013.pdf:PDF},
+  oai2identifier = {1311.3915},
+  owner = {christian},
+  timestamp = {2013.12.16}
+}
+
+@MASTERSTHESIS{Richert2011,
+  author = {Tuva Richert},
+  title = {k_S^0, Λ, and ͞Λ, pT spectra in pp collisions at √s = 7 TeV, measured
+	with the ALICE experiment at LHC},
+  school = {Lunds Universitet},
+  year = {2011},
+  file = {:/home/christian/msc/thesis/thesis/bibliography/Rapport_Tuva_Richert_Master.pdf:PDF},
+  owner = {christian},
+  timestamp = {2013.01.21}
+}
+
+@ARTICLE{Roesler2000,
+  author = {Roesler, Stefan and Engel, Ralph and Ranft, Johannes},
+  title = {{The Monte Carlo event generator DPMJET-III}},
+  year = {2000},
+  pages = {1033-1038},
+  archiveprefix = {arXiv},
+  eprint = {hep-ph/0012252},
+  primaryclass = {hep-ph},
+  reportnumber = {SLAC-PUB-8740},
+  slaccitation = {%%CITATION = HEP-PH/0012252;%%}
+}
+
+@MISC{Scherer2004,
+  author = {Stefan Scherer},
+  title = {Dynamics of Coloured Quarks: The Quark Gluon Plasma in the Computer},
+  month = {Oct},
+  year = {2004},
+  file = {:/home/christian/msc/thesis/thesis/figures/qcd-phase-diagram.png:PNG image},
+  keywords = {qcd, phase diagram},
+  owner = {christian},
+  timestamp = {2014.03.04},
+  url = {http://th.physik.uni-frankfurt.de/~scherer/qmd/cscus2004_stefan_scherer.pdf}
+}
+
+@CONFERENCE{Schuster2013,
+  author = {Schuster, T. and Morsch, A.},
+  title = {Mixed-event corrections for two-particle angular correlations},
+  year = {2013},
+  series = {ALICE Physics Club},
+  month = {Dec},
+  file = {:/home/christian/msc/thesis/thesis/bibliography/mixed_events_presentation.pdf:PDF},
+  owner = {christian},
+  timestamp = {2014.01.22}
+}
+
+@MISC{alice_3d,
+  author = {Jochen Thaeder},
+  title = {{3D ALICE Schematic}},
+  howpublished = {\url{https://aliceinfo.cern.ch/Figure/node/3400}},
+  year = {2012},
+  note = {[Online; accessed 2-February-2014]},
+  file = {:/home/christian/msc/thesis/thesis/figures/2012-Aug-02-ALICE_3D_v0_with_Text.jpg:JPG image}
+}
+
+@MISC{V0Acent2013,
+  author = {Alberica Toia},
+  title = {{V0A centrality in pPb + Glauber-NBD fit}},
+  howpublished = {\url{https://aliceinfo.cern.ch/Figure/node/4492}},
+  year = {2013},
+  note = {[Online; accessed 8-March-2014]},
+  file = {:/home/christian/msc/thesis/thesis/figures/cent_V0A.pdf:PDF}
+}
+
+@ARTICLE{Velkovska2012,
+  author = {ulia Velkovska and Vanderbilt University and Gabor Veres},
+  title = {CMS studies the quark–gluon plasma},
+  journal = {Cern Courier: September 2012},
+  year = {2012},
+  owner = {christian},
+  timestamp = {2014.03.08},
+  url = {http://cerncourier.com/cws/article/cern/50560}
+}
+
+@ARTICLE{Venugopalan2013,
+  author = {Raju Venugopalan},
+  title = {Long range correlations in high multiplicity hadron collisions:building
+	bridges with ridges},
+  year = {2013},
+  month = dec,
+  __markedentry = {[christian:]},
+  abstract = {We discuss the physics of the ridge -- azimuthally collimated long
+	range rapidity correlations -- in high multiplicity proton-proton
+	and proton-nucleus collisions. We outline some of the theoretical
+	discussions in the literature that address the systematics of these
+	ridge correlations.},
+  comments = {13 pages, 2 figures. Invited talk at MIT p+A workshop, to be published
+	in a Special Issue of Annals of Physics in honor of Prof. Wit Busza},
+  eprint = {1312.0113},
+  file = {:/home/christian/msc/thesis/thesis/bibliography/Venugopalan2013.pdf:PDF},
+  oai2identifier = {1312.0113},
+  owner = {christian},
+  timestamp = {2013.12.16}
+}
+
+@ARTICLE{Venugopalan:2008xf,
+  author = {Venugopalan, Raju},
+  title = {{From Glasma to Quark Gluon Plasma in heavy ion collisions}},
+  journal = {J.Phys.},
+  year = {2008},
+  volume = {G35},
+  pages = {104003},
+  abstract = {When two sheets of Color Glass Condensate collide in a high energy
+	heavy ion collision, they form matter with very high energy densities
+	called the Glasma. We describe how this matter is formed, its remarkable
+	properties and its relevance for understanding thermalization of
+	the Quark Gluon Plasma in heavy ion collisions. Long range rapidity
+	correlations contained in the near side ridge measured in heavy ion
+	collisions may allow one to directly infer the properties of the
+	Glasma.},
+  archiveprefix = {arXiv},
+  doi = {10.1088/0954-3899/35/10/104003},
+  eprint = {0806.1356},
+  file = {:/home/christian/msc/thesis/thesis/bibliography/intor_glasma_qgp.pdf:PDF},
+  primaryclass = {hep-ph},
+  slaccitation = {%%CITATION = ARXIV:0806.1356;%%}
+}
+
+@MASTERSTHESIS{Vislavicius2013,
+  author = {Vytautas Vislavicius},
+  title = {Azimuthal Angular Description of Jet Quenching at High pT},
+  year = {2013},
+  file = {:/home/christian/msc/thesis/thesis/bibliography/vytautas.pdf:PDF},
+  owner = {christian},
+  timestamp = {2014.03.02}
+}
+
+@ARTICLE{Voloshin1994,
+  author = {{Voloshin}, S. and {Zhang}, Y.},
+  title = {{Flow Study in Relativistic Nuclear Collisions by Fourier Expansion
+	of Azimuthal Particle Distributions}},
+  journal = {ArXiv High Energy Physics - Phenomenology e-prints},
+  year = {1994},
+  month = jul,
+  adsnote = {Provided by the SAO/NASA Astrophysics Data System},
+  adsurl = {http://adsabs.harvard.edu/abs/1994hep.ph....7282V},
+  eprint = {arXiv:hep-ph/9407282},
+  file = {:/home/christian/msc/thesis/thesis/bibliography/flow_study_Voloshin_Zhang.pdf:PDF},
+  keywords = {High Energy Physics - Phenomenology},
+  owner = {christian},
+  url = {http://arxiv.org/abs/hep-ph/9407282}
+}
+
+@ARTICLE{Wang2013,
+  author = {Fuqiang Wang},
+  title = {Novel Phenomena in Particle Correlations in Relativistic Heavy-Ion
+	Collisions},
+  journal = {Prog. Part. Nucl. Phys.},
+  year = {2013},
+  volume = {74},
+  pages = {35-54},
+  month = nov,
+  __markedentry = {[christian:6]},
+  abstract = {The novel phenomena observed in particle angular correlations are
+	reviewed. They include the double-peak away-side azimuthal correlations
+	in relativistic heavy-ion collisions and the long-range pseudorapidity
+	near-side (ridge) correlations in heavy-ion as well as in proton-induced
+	collisions. The collision system and energy dependence of these phenomena
+	are examined, wherever possible and most abundantly for the ridge
+	correlations. Their possible theoretical interpretations and what
+	might be learned about the properties of the collision systems from
+	theoretical comparisons are discussed. Prospective future measurements
+	and theoretical undertakings are outlined that might help further
+	the understanding of the physics mechanisms underlying these phenomena.},
+  comments = {37 pages, 17 figures. Invited review in Progress in Particle and Nuclear
+	Physics},
+  eprint = {1311.4444},
+  file = {:/home/christian/msc/thesis/thesis/bibliography/wang2013.pdf:PDF},
+  oai2identifier = {1311.4444},
+  owner = {christian},
+  timestamp = {2013.12.16}
+}
+
+@BOOK{Wojciech2010,
+  title = {Phenomenology of Ultra-relativistic Heavy-ion Collisions},
+  publisher = {World Scientific},
+  year = {2010},
+  author = {Wojciech, F.},
+  isbn = {9789814280686},
+  url = {http://books.google.se/books?id=4gIp05n9lz4C}
+}
+
+@ARTICLE{Xu2013,
+  author = {Lingshan Xu and Chin-Hao Chen and Fuqiang Wang},
+  title = {Dividing by mixed-events for acceptance correction is wrong},
+  year = {2013},
+  month = apr,
+  abstract = {We point out that the mixed-event method for two-particle acceptance
+	correction, widely used in particle correlation measurements at RHIC
+	and LHC, is wrong. The correct acceptance should be the convoluted
+	distribution from two single-particle efficiency X acceptance distributions.
+	The error of the mixed-event method, which guarantees a uniform \Delta\eta\
+	two-particle combinatorial density, is however small in correlation
+	analyses where the two particles are integrated over an extended
+	\eta\ range. With one particle fixed in \eta\ and the right acceptance
+	correction, the background-subtracted correlated pair density may
+	reveal a \Delta\eta\ dependence. This has important physics implication,
+	and may provide crucial information to disentangle physics mechanisms
+	for the recently observed long-range ridge correlation in asymmetric
+	p+Pb collisions at the LHC.},
+  comments = {3 pages},
+  eprint = {1304.8120},
+  file = {:/home/christian/msc/thesis/thesis/bibliography/Dividing_by_mixed-events.pdf:PDF},
+  oai2identifier = {1304.8120},
+  owner = {christian},
+  timestamp = {2013.05.02}
+}
+
+@comment{jabref-meta: selector_publisher:}
+
+@comment{jabref-meta: selector_author:}
+
+@comment{jabref-meta: selector_journal:}
+
+@comment{jabref-meta: selector_keywords:}
+
