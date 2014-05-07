@@ -1,0 +1,123 @@
+\documentclass[11pt,a4paper,twoside]{book}
+\input{packages}
+%-----Options for the todo package - TURN OF FOR FINAL!!!!----
+%\setlength{\marginparwidth}{2.5cm} %Sets the margin width right for todos
+%\reversemarginpar %reverses the side on which the todos are set
+%-----Options for the todo package END---
+
+%\renewcommand{\captionfont}{\fontsize{20pt}{20pt}}
+\renewcommand{\captionfont}{\fontsize{10pt}{12pt}\selectfont} 
+\pagestyle{fancyplain}
+\renewcommand{\chaptermark}[1]%
+         {\markboth{\thechapter.\ #1}{}}
+\renewcommand{\sectionmark}[1]%
+         {\markright{\thesection\ #1}}
+\lhead[\fancyplain{}{\thepage}]%
+    {\fancyplain{}{\bfseries\rightmark}}
+\rhead[\fancyplain{}{\bfseries\leftmark}]%
+    {\fancyplain{}{\thepage}}
+\cfoot{
+%\ifodd\thepage
+%\else
+%\begin{picture}(0,0)
+%\put(250,-20){\includegraphics{bilder/logo.jpg}}
+%\end{picture}
+%\fi
+}
+
+\setlength{\parindent}{0cm}
+\setlength{\textwidth}{15cm}
+\setlength{\oddsidemargin}{1.25cm}
+\setlength{\evensidemargin}{0.25cm}
+\setlength{\headwidth}{15cm}
+\setlength{\headheight}{15pt}
+%\addtolength{\textheight}{-10mm}
+%\addtolength{\headsep}{5mm}
+
+\sloppy
+\input{cmds_acro_gloss.tex}
+
+\title{Long-range angular correlations in soft and hard pPb collisions at a center-of-mass energy of \SI{5.02}{TeV} measured with ALICE}
+\author{Christian Bourjau}
+\date{March 21, 2014}
+
+\begin{document}
+\makeatletter
+\begin{titlepage}
+\frontmatter
+\begin{center}
+%\textsf{ 
+\LARGE{Long-range angular correlations in soft and hard \\
+pPb collisions at a center-of-mass energy of \SI{5.02}{TeV} measured with ALICE}
+\\[1cm]
+\large{Master Thesis\\by\\Christian Bourjau}\\[1cm]
+%}
+\begin{figure}[h]
+\centering
+\includegraphics[width=8cm]{./figures/LundUniversity_C2line_RGB.png}\\[1cm]
+\end{figure}
+
+%\textsf{
+\large{\@date \\[3.0ex]Supervisor: \\ Peter Christiansen \\[1.5ex] Department of Physics\\ Lund University}
+%}
+
+\end{center}
+\end{titlepage}
+
+% \begin{abstract}
+%    Abstract
+% \end{abstract}
+
+\newpage
+\thispagestyle{empty}
+\input{abstract}
+\input{samfattining}
+\newpage
+
+\input{ack}
+
+\cleardoublepage
+\tableofcontents
+\newpage
+\thispagestyle{empty}
+\listoffigures
+\newpage
+\thispagestyle{empty}
+
+\mainmatter
+\setcounter{page}{1}
+ \clearpage
+\markboth{}{}
+%\parbox{15cm}{
+\vspace{10cm}
+\input{introduction}
+\input{concepts}
+\input{detector}
+\input{event_track_selection}
+\input{angular_correlations}
+\input{results}
+\input{discussion}
+\input{summary}
+\appendix
+\input{appendix}
+
+\glossarystyle{altlist}
+\printglossary[type=\acronymtype, style=mcolindex]
+
+\addcontentsline{toc}{chapter}{Bibliography}
+%\bibliography{bibliography/sources}
+%\bibliographystyle{abbrvn}
+\printbibliography
+\newpage
+\thispagestyle{empty}
+
+% \input{ack}
+% \input{dec}
+
+\end{document}
+
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: t
+%%% End: 
