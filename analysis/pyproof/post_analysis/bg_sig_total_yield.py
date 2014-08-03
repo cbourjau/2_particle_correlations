@@ -1,11 +1,8 @@
 """Perform post analysis on 'raw' data"""
 from rootpy.io import root_open
-from rootpy import asrootpy
-from ROOT import Double
-
 import logging
 import re
-from os.path import dirname
+
 # Suppress "WARNING"-level notices from THn not in rootpy
 logging.getLogger("rootpy").setLevel(logging.ERROR)
 
@@ -15,37 +12,36 @@ def calc_bg(fn):
     with root_open(fn, 'update') as f:
         try:
             f.mkdir('processed')
-            f.mkdir('processed/background')
         except ValueError:
-            print 'removing old dir'
-            f.rm('processed/background')
-            f.mkdir('processed/background')
+            pass
+        folders = ['background', 'weighted_background']
+        [f.rm('processed/'+folder) for folder in folders]
+        [f.mkdir('processed/'+folder) for folder in folders]
 
         # get signal per z section per eclass
         # NOTE: range(bin_bin, bin_max)
         # Bin number starts at 1 !!!!!!
-        bg_raw = f.Get('raw/background')
-        for sec_bin in range(1, 11):
-            for eclass_bin in range(1, 5):
-                # get one background per section
-                bg_raw.GetAxis(2).SetRange(sec_bin, sec_bin)
-                bg_raw.GetAxis(3).SetRange(eclass_bin, eclass_bin)
-                # include pt_max over and under flow
-                bg_raw.GetAxis(4).SetRange(0, 0)
-                bg = bg_raw.Projection(1, 0)
-                bg.SetNameTitle((bg_raw.GetName()
-                                 + '_z_sec_' + str(sec_bin - 1)
-                                 + '_class_' + str(eclass_bin - 1)),
-                                bg_raw.GetTitle() + ' z section'
-                                + str(sec_bin - 1))
-                scale_background(bg)
-                f.processed.background.cd()
-                bg.Write()
+        for w in ['', 'weighted_']:
+            bgs = [f.Get('raw/'+w+'background'+str(i)) for i in range(0, 4)]
+            for eclass, bg in enumerate(bgs):
+                logging.info('Calculating '+w+'background for class ' + str(eclass))
+                for sec_bin in range(1, 11):
+                    # get one background per section
+                    bg.GetZaxis().SetRange(sec_bin, sec_bin)
+                    bg_tmp = bg.Project3D('yx')  # yes, 'yx'...
+                    bg_tmp.SetNameTitle((bg.GetName()[:-1]
+                                         + '_z_sec_' + str(sec_bin - 1)
+                                         + '_class_' + str(eclass)),
+                                    bg.GetTitle() + ' z section' + str(sec_bin - 1))
+                    scale_background(bg_tmp)
+                    f.cd('processed/'+w+'background')
+                    bg_tmp.Write()
 
 
-def calc_signal_and_total_yield(path, correct=None, assoc_inter=None, cut=''):
+def calc_signal_and_total_yield(path, correct=None, path_to_mc=''):
     """call after calc_bg"""
     print 'computing signal'
+    logging.info('Computing Signals')
     if correct:
         sfx = '_corrected'
     else:
@@ -53,77 +49,62 @@ def calc_signal_and_total_yield(path, correct=None, assoc_inter=None, cut=''):
     with root_open(path, 'update') as f:
         try:
             f.mkdir('processed')
-            f.mkdir('processed/signal')
-            f.mkdir('processed/total_yield' + sfx)
         except ValueError:
-            print 'removing old dir'
-            f.rm('processed/total_yield' + sfx)
-            f.rm('processed/signal')
-            f.mkdir('processed/signal')
-            f.mkdir('processed/total_yield' + sfx)
+            pass
 
-        sig_raw = f.Get('raw/signal')
-        trig_raw = f.Get('raw/trig')
-        threshs = [1] + range(4, 12)  # max of 10 GeV: 20 bins
-        if correct:
-            eff = get_corr(assoc_inter, cut)
-        for pt_thresh in threshs:  # bins of ptmax
-            for eclass_bin in range(1, 5):
+        folders = ['signal', 'total_yield', 'weighted_signal', 'weighted_total_yield',
+                   'total_yield_corrected']
+        [f.rm('processed/'+folder) for folder in folders]
+        [f.mkdir('processed/'+folder) for folder in folders]
+        for w in ['', 'weighted_']:
+            signals = [f.Get('raw/'+w+'signal'+str(i)) for i in range(0,4)]
+            triggers = f.Get('raw/'+w+'trigger_counter')
+            for eclass, sig in enumerate(signals):
+                logging.info('Calculating '+w+'signal for class ' + str(eclass))
                 total_yield = None
                 for sec_bin in range(1, 11):
-                    bg = f.processed.background.Get(
-                        ('background'
-                         + '_z_sec_' + str(sec_bin - 1)
-                         + '_class_' + str(eclass_bin - 1)))
-                    # set z section, class and ptmax:
-                    sig_raw.GetAxis(2).SetRange(sec_bin, sec_bin)
-                    sig_raw.GetAxis(3).SetRange(eclass_bin, eclass_bin)
-                    sig_raw.GetAxis(4).SetRange(pt_thresh, 21)
-                    sig = sig_raw.Projection(1, 0)  # y, x
+                    # set z section
+                    sig.GetZaxis().SetRange(sec_bin, sec_bin)
+                    sig_tmp = sig.Project3D('yx')  # yes, 'yx'...
 
-                    sig.SetNameTitle((sig_raw.GetName()
+                    sig_tmp.SetNameTitle((sig.GetName()[:-1]
                                       + '_z_sec_' + str(sec_bin - 1)
-                                      + '_class_' + str(eclass_bin - 1)
-                                      + '_thresh_' + str((pt_thresh-1)*0.5)),
-                                     sig_raw.GetTitle() + ' z section'
-                                     + str(sec_bin - 1))
-                    f.processed.signal.cd()
-                    sig.Write()
-
+                                      + '_class_' + str(eclass)),
+                                     (sig.GetTitle() + ' z section'
+                                     + str(sec_bin - 1)))
+                    f.cd('processed/'+w+'signal')
+                    sig_tmp.Write()
+                    bg_tmp = f.Get('processed/'+w+'background/'+w+'background'
+                                   + '_z_sec_' + str(sec_bin - 1)
+                                   + '_class_' + str(eclass))
                     # compute yield
-                    sig.Divide(bg)  # divide by bg of current z-section
+                    sig_tmp.Divide(bg_tmp)  # divide by bg of current z-section
                     if not total_yield:
-                        total_yield = sig
-                        # print ('calculating total yield for event class',
-                        #       str(eclass_bin - 1))
+                        total_yield = sig_tmp
                     else:
-                        total_yield.Add(sig)
+                        total_yield.Add(sig_tmp)
 
                 # Get counters:
-                trig_raw.GetAxis(3).SetRange(eclass_bin, eclass_bin)
-                trig_raw.GetAxis(4).SetRange(pt_thresh, 21)
+                n_trig = triggers.GetBinContent(eclass + 1)
+                scale = 1.0/(n_trig 
+                             * sig.GetXaxis().GetBinWidth(1)
+                             * sig.GetYaxis().GetBinWidth(1))
+                logging.info('ntrig class ' + str(eclass) + ': '+ str(n_trig))
+                logging.info('scalling class ' + str(eclass) + ' by ' + str(scale))
+                total_yield.Scale(scale)
 
-                trig = trig_raw.Projection(0)
-                n_trig = trig.Integral()
-                trig.Delete()
-                total_yield.Scale(1.0/(n_trig
-                                       * sig.GetXaxis().GetBinWidth(1)
-                                       * sig.GetYaxis().GetBinWidth(1)))
-
-                # compute total yield ber threshold and eclass
+                # compute total yield per eclass
                 total_yield.SetNameTitle(('total_yield'
-                                         + '_class_' + str(eclass_bin - 1)
-                                         + '_thresh_' + str((pt_thresh-1)*0.5)),
+                                         + '_class_' + str(eclass)),
                                          ('Total associated yield per' +
                                           'trigger particle\n '
-                                          + 'class: ' + str(eclass_bin - 1)
-                                          + 'thresh: ' + str((pt_thresh-1)*0.5)))
+                                          + 'class: ' + str(eclass)))
                 # apply corrections
                 if correct:
-                    total_yield.Scale(1.0 / eff)
-                    f.processed.total_yield_corrected.cd()
+                    apply_corr(total_yield, path_to_mc=path_to_mc)
+                    f.cd('processed/total_yield'+sfx)
                 else:
-                    f.processed.total_yield.cd()
+                    f.cd('processed/'+w+'total_yield')
                 total_yield.Write()
 
 
@@ -141,22 +122,33 @@ def scale_background(hist):
     hist.Scale(s)
 
 
-def get_corr(assoc_inter, cut):
-    if cut == 'golden':
-        f_eff_st = root_open('/home/christian/msc/results/efficiencies/'
-                             'single_track_eff_golden/single_eff.root',
-                             'read')
-    if cut == 'TPC':
-        f_eff_st = root_open('/home/christian/msc/results/efficiencies/'
-                             'single_track_eff_TPC/single_eff.root',
-                             'read')
-    steff = f_eff_st.single_track_eff
-    h_p3 = asrootpy(steff.Projection(3))
-    h_p3.Scale(1.0 / (36*32*10))
-    err = Double()
-    eff = (h_p3.IntegralAndError(h_p3.FindBin(assoc_inter[0]),
-                                 h_p3.FindBin(assoc_inter[1]-0.001),
-                                 err, 'width')
-           / (assoc_inter[1] - assoc_inter[0]))
-    print 'correction single value: ', eff, ' +- ', err
-    return eff
+def apply_corr(hist, path_to_mc):
+    # if corr == 'golden':
+    #     eff = 0.764984  # central, no thresh, small data set!!!!!!!!!!
+    #     print 'Corrected for golden cuts'
+    #     hist.Scale(1/eff)
+    # elif corr == 'TPC':
+    #     eff = 0.909211  # central, no thresh, small data set!!!!!!!!!!
+    #     print 'Corrected for TPC-only cuts'
+    #     hist.Scale(1/eff)
+    # else:
+    #     print 'No corrections applied'
+    path_eff = path_to_mc.replace('output_MC.root', 'output_effs.root')
+    with root_open(path_eff) as f:
+        re_class = r'_class_(\d)_'
+        re_thresh = r'_thresh_(\d+\.\d)'
+        c = re.findall(re_class, hist.GetName())[0]
+        t = re.findall(re_thresh, hist.GetName())[0]
+        h_eff = f.Get('processed/eff_from_ty/eff_yield_class_' + c +
+                      '_thresh_' + t)
+        hist.Divide(h_eff.GetFunction('peak'))
+
+
+
+
+
+
+
+
+
+

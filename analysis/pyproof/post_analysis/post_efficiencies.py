@@ -3,7 +3,6 @@ from rootpy.io import root_open
 from rootpy import asrootpy
 import ROOT
 from os.path import dirname, abspath
-from fit_2d import fit_2d_efficiency
 import numpy as np
 
 
@@ -30,7 +29,6 @@ def calc_effs(path_mc, path_recon, out_dir=None):
                         ty_mc = f_mc.Get('processed/total_yield/' + h_name)
                         ty_re = f_re.Get('processed/total_yield/' + h_name)
                         eff = ty_re / ty_mc
-                        fit_2d_efficiency(eff)
                         name = 'eff_' + ty_re.name[6:]
                         eff.SetNameTitle(name,
                                          'efficiency' + ty_re.name[6:])

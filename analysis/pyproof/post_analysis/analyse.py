@@ -7,9 +7,6 @@ import argparse
 
 parser = argparse.ArgumentParser()
 parser.add_argument('--real', type=str, help='Path to real data')
-parser.add_argument("--assocs", help="interval for associated particles;"
-                    + "min max", nargs=2, type=float)
-parser.add_argument('--cut', type=str, help='Cut used')
 parser.add_argument('--mc', type=str, help='Path to MC data')
 parser.add_argument('--reconstructed', type=str,
                     help='Path to reconstructed data')
@@ -24,53 +21,51 @@ path_real = args.real
 path_mc = args.mc
 path_recon = args.reconstructed
 
-if args.recalc_effs:
-    if not path_mc or not path_recon:
-        assert(0)
-
+if not (path_real or path_mc or path_recon):
+    assert(0)
+if path_recon:
     print 'calc total yield for reconstructed'
     calc_bg(path_recon)
     calc_signal_and_total_yield(path_recon)
 
+if path_mc:
     print 'calc total yield for MC'
     calc_bg(path_mc)
     calc_signal_and_total_yield(path_mc)
 
+if path_mc and path_recon:
     print 'calc 2D efficiencies from total yield and signal distributions'
     calc_effs(path_mc, path_recon)
 
 if path_real:
-
     print 'calc UNcorrected real'
     calc_bg(path_real)
     calc_signal_and_total_yield(path_real)
 
-    print 'calculate uncorrected and unscaled high minus low histos'
-    fn = 'output_real.root'
-    high_minus_low(path_real)
+# print 'calc corrected real'
+# fn = 'output_real.root'
+# #calc_bg(path_real)
+# #calc_signal_and_total_yield(path_real, correct=True, path_to_mc=path_mc)
 
-    print 'calculate high minus low histos SCALED'
-    fn = 'output_real.root'
-    high_minus_low(path_real, scalling=True)
+# print 'calculate uncorrected and unscaled high minus low histos'
+# fn = 'output_real.root'
+# high_minus_low(path_real)
 
-    if args.cut and args.assocs:
-        print 'calc corrected real'
-        fn = 'output_real.root'
-        calc_bg(path_real)
-        calc_signal_and_total_yield(path_real, correct=True,
-                                    assoc_inter=args.assocs, cut=args.cut)
+# print 'calculate corrected and unscaled high minus low histos'
+# fn = 'output_real.root'
+# #high_minus_low(path_real, correct=True)
 
-        print 'calculate corrected and unscaled high minus low histos'
-        fn = 'output_real.root'
-        high_minus_low(path_real, correct=True)
+# print 'calculate high minus low histos SCALED'
+# fn = 'output_real.root'
+# high_minus_low(path_real, scalling=True)
 
-        print 'calculate high minus low histos SCALED and corrected'
-        fn = 'output_real.root'
-        high_minus_low(path_real, scalling=True, correct=True)
+# print 'calculate high minus low histos SCALED and corrected'
+# fn = 'output_real.root'
+# #high_minus_low(path_real, scalling=True, correct=True)
 
-#print 'extract yield over entire phi'
+# #print 'extract yield over entire phi'
 
-#print 'extract yield only from near side'
+# #print 'extract yield only from near side'
 
 
 

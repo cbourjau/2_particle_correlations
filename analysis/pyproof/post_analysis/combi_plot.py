@@ -189,6 +189,7 @@ def get_subtraction(fn, title=None):
 
 def _plot_x_projection(hist_2D, yrange_px, lable, ax, lns, exclude_peak,
                        plot_fit, dphi_extra):
+    #import ipdb; ipdb.set_trace()
     sub_px = extract_yield(hist_2D, exclude_peak)[0]
     sub_px.set_title(lable)
     if dphi_extra:

@@ -20,20 +20,21 @@ def extract_yield(sub, exclude_peak=True):
     #nearside
     sub.GetXaxis().SetRange(sub.GetXaxis().FindBin(-pi/3 + 0.01),
                             sub.GetXaxis().FindBin(pi/3 - 0.01))
+    y_n_bins = len([type(x) for x in sub.y()])
     if exclude_peak:
         px_near = asrootpy(sub.ProjectionX("near_without_peak",
                                            0, -1, "[-peak] o"))
-        px_near.Scale(1.0/(32 - (sub.get_yaxis().FindBin(0.8 - 0.01)
+        px_near.Scale(1.0/(y_n_bins - (sub.get_yaxis().FindBin(0.8 - 0.01)
                                  - sub.get_yaxis().FindBin(-0.8 + 0.01) + 1)))
     else:
         px_near = asrootpy(sub.ProjectionX("near_without_peak", 0, -1, "o"))
-        px_near.Scale(1.0/32)
+        px_near.Scale(1.0/y_n_bins)
 
     # far side
     sub.GetXaxis().SetRange(sub.GetXaxis().FindBin(2*pi/3 + 0.01),
                             sub.GetXaxis().FindBin(4*pi/3 - 0.01))
     px_far = asrootpy(sub.ProjectionX("farside", 0, -1, "o"))
-    px_far.Scale(1.0/32)
+    px_far.Scale(1.0/y_n_bins)
 
     # remaining
     sub.GetXaxis().SetRange(1, sub.GetXaxis().FindBin(-pi/3 - 0.01))
@@ -45,7 +46,7 @@ def extract_yield(sub, exclude_peak=True):
 
     sub.GetXaxis().SetRange(sub.GetXaxis().FindBin(4*pi/3 + 0.01), 36)
     px_remain += asrootpy(sub.ProjectionX("reminder_3", 0, -1, "o"))
-    px_remain.Scale(1.0/32)
+    px_remain.Scale(1.0/y_n_bins)
 
     total = px_near + px_far + px_remain
     total.SetStats(0)

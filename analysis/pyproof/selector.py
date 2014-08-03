@@ -1,17 +1,19 @@
 ### selector module (selector.py, name has to match as per in main.py)
-from ROOT import TPySelector, gROOT, TH1I, THnSparseF
-
+from ROOT import TProfile3D
+import ROOT
 from array import array
 import numpy as np
-from math import pi
+from numpy import pi
+
 import pickle
 from rootpy.io import root_open
+from rootpy.plotting import Hist3D, Hist1D
+from root_numpy import fill_profile
 
 
 # load MyClass definition macro (append '+' to use ACLiC)
-gROOT.LoadMacro('DebugClassesMultESA2013.C+')
+ROOT.gROOT.LoadMacro('DebugClassesMultESA2013.C+')
 #from ROOT import DeDxEvent
-
 
 def try_except(fn):
     """decorator for extra debugging output"""
@@ -25,79 +27,127 @@ def try_except(fn):
     return wrapped
 
 
-class MyPySelector(TPySelector):
+class MyPySelector(ROOT.TPySelector):
 
     def __init__(self):
         print self.__class__.__module__+": init"
         with open('parameters.pkl', 'read') as pkl:
             args = pickle.load(pkl)
         print 'Settings: ', args
-        self.assoc_inter = args.assocs
-        self.trigger_inter = args.triggers
-        self.data_type = args.datatype
-        self.single_track_correction = args.single_track
-        self.track_cut = args.cut
-        self.allow_0_trig = args.allow_0_trig_in_pool
-        self.events_have_one_mc_trigger = args.events_have_one_mc_trigger
-        self.events_have_reconstructed_triggers = args.events_have_recon_triggers
+        for (k, v) in vars(args).items():
+            setattr(self, k, v)
+
         if self.track_cut == 'golden':
             self.fn_single_tracks = (
-                '~/msc/results/efficiencies/single_track_eff_golden/single_eff.root')
+                #'~/msc/results/efficiencies/single_track_eff_golden/single_eff.root')
+                '~/msc/results/efficiencies/single_track_eff_golden_z_pt/eff_z_pt_only.root')
             self.track_filter = 1  # 1:golden; 2:TPC-only
+            # effs around the tpc border 
+            self.fn_eff_sector_neg = (
+                '~/msc/cern_stay/results/tpc_border_eff_golden/sector_border_eff_neg.root')
+            self.fn_eff_sector_pos = (
+                '~/msc/cern_stay/results/tpc_border_eff_golden/sector_border_eff_pos.root')
         if self.track_cut == 'tpc':
+            raise NotImplementedError
             self.fn_single_tracks = (
                 '~/msc/results/efficiencies/single_track_eff_TPC/single_eff.root')
             self.track_filter = 2  # 1:golden; 2:TPC-only
+
         self.pool_size = 1000
-        self.pt_threshold = args.threshold
         self.zvtx_bins = (10, -10, 10)
         self.cent_bins = (4, 0, 100.01)  # edges are just dummies!
         self.cent_edges = array('d', [0, 20, 40, 60, 100.01])
-        self.ptmax_bins = (20, 0, 10)
         self.phi_bins = (36, (-pi/2), (3*pi/2))
         self.eta_bins = (32, -1.6, 1.6)
-        self.trigger = 1  # 1 = V0AND
+        self.trigger = 1  # 1 = V0AND !!! Double check this!!!
         self.max_dist_vtx_xy = 2.4
         self.max_dist_vtx_z = 3.2
-        # for counter histograms only:
-        #number of tracks in the given interval (# of assocs or triggers)
-        self.n_tracks_nbins = 10
-        # last bin is really large
-        self.n_tracks_edges = array('d', list(range(0, 10)) + [100])
 
     def Begin(self):
         print 'Data type in Begin(): ', self.data_type
 
     def SlaveBegin(self, tree):
-        print 'py: slave beginning'
-        print 'data type in slave: ', self.data_type
-        # register counters wrt z index
-        zvtx_nbins, zvtx_low, zvtx_high = self.zvtx_bins
-        cent_nbins, cent_low, cent_high = self.cent_bins  # edges are ignored
-        ptmax_nbins, ptmax_low, ptmax_high = self.ptmax_bins
-
-        self.valid_counter = TH1I('valid', 'Valid events',
-                                  zvtx_nbins, zvtx_low, zvtx_high)
-        self.trig_counter = self.make_counter_histogram('trig',
-                                        'Total number of triggers')
-
-        # self.assoc_counter = self.make_counter_histogram('assocs',
-        #                             'Total number of assocs')
-
-        # Dimensions: phi, eta, z_vtx, cent, ptmax
-        self.signal = self.make_diff_histogram('signal', 'Signal distribution')
-        self.background = self.make_diff_histogram('background',
-                                                   'Background distribution')
-        self.GetOutputList().Add(self.signal)
-        self.GetOutputList().Add(self.background)
-        self.GetOutputList().Add(self.valid_counter)
+        # trigger counters (with and without weight
+        self.trig_counter = Hist1D(self.cent_edges, name='trigger_counter',
+                                   title='Trigger counter')
+        self.trig_counter.sumw2()
         self.GetOutputList().Add(self.trig_counter)
-        # self.GetOutputList().Add(self.assoc_counter)
+        self.trig_counter_weighted = Hist1D(self.cent_edges,
+                                            name='weighted_trigger_counter',
+                                            title='Weighted trigger counter')
+        self.trig_counter_weighted.sumw2()
+        self.GetOutputList().Add(self.trig_counter_weighted)
 
-        if self.single_track_correction:
-            # load single weight histogram
-            self.single_track_weight = (
-                root_open(self.fn_single_tracks, 'read').Get('single_track_eff'))
+        # count how many events have tracks for which no efficiency is available
+        self.no_eff_avail_counter = Hist1D(1, 0, 2, name='no_eff_avail_counter',
+                                           title='No efficiency counter')
+        self.GetOutputList().Add(self.no_eff_avail_counter)
+
+        self.signals = [] 
+        self.signals_weighted = []
+        self.backgrounds = []
+        self.backgrounds_weighted = []
+        self.eta1eta2 = []
+        self.signal_pt_profiles = []
+        self.background_pt_profiles = []
+        for i in range(len(self.cent_edges) - 1):
+            self.signals.append(
+                Hist3D(*(self.phi_bins + self.eta_bins + self.zvtx_bins), 
+                       name='signal'+str(i),
+                       title='Signal distribution;phi;eta;zvtx'))
+            self.signals[-1].sumw2()
+
+            self.signals_weighted.append(
+                Hist3D(*(self.phi_bins + self.eta_bins + self.zvtx_bins), 
+                       name='weighted_signal'+str(i),
+                       title='Weighted signal distribution;phi;eta;zvtx'))
+            self.signals[-1].sumw2()
+
+            self.backgrounds.append(
+                Hist3D(*(self.phi_bins + self.eta_bins + self.zvtx_bins),
+                       name='background'+str(i),
+                       title='Background distribution;phi;eta;zvtx'))
+            self.backgrounds[-1].sumw2()
+
+            self.backgrounds_weighted.append(
+                Hist3D(*(self.phi_bins + self.eta_bins + self.zvtx_bins),
+                       name='weighted_background'+str(i),
+                       title='Weighted background distribution;phi;eta;zvtx'))
+            self.backgrounds[-1].sumw2()
+
+            #############
+            ###   Special profiles   ###
+            #############
+            self.eta1eta2.append(
+                TProfile3D('eta1eta2_pt_prof'+str(i),
+                           'eta1 eta2 pt profile ;eta_a;eta_t;pt',
+                           32, -.8, .8, 32, -.8, .8, 10, -10, 10))
+
+            self.signal_pt_profiles.append(
+                TProfile3D('signal_pt_prof'+str(i), 'Signal pt profile ;phi;eta;pt',
+                           *(self.phi_bins + self.eta_bins + self.zvtx_bins)))
+
+            self.background_pt_profiles.append(
+                TProfile3D('background_pt_prof'+str(i),'Background pt profile ;phi;eta;pt',
+                           *(self.phi_bins + self.eta_bins + self.zvtx_bins)))
+
+
+        [self.GetOutputList().Add(s) for s in self.signals]
+        [self.GetOutputList().Add(s) for s in self.signals_weighted]
+        [self.GetOutputList().Add(b) for b in self.backgrounds]
+        [self.GetOutputList().Add(b) for b in self.backgrounds_weighted]
+        [self.GetOutputList().Add(h) for h in self.eta1eta2]
+        [self.GetOutputList().Add(h) for h in self.signal_pt_profiles]
+        [self.GetOutputList().Add(h) for h in self.background_pt_profiles]
+
+        # load single weight histogram
+        self.single_track_weight = (
+            root_open(self.fn_single_tracks, 'read').Get('single_track_eff'))
+        # effs around the tpc border 
+        self.eff_sector_neg = root_open(self.fn_eff_sector_neg, 'read').Get(
+            'pt_phi_neg_counter')
+        self.eff_sector_pos = root_open(self.fn_eff_sector_pos, 'read').Get(
+            'pt_phi_pos_counter')
 
         # The pool for each z section
         self.pool = [[]]
@@ -106,10 +156,10 @@ class MyPySelector(TPySelector):
                 self.pool[-1].append([])
             self.pool.append([])
         # Helper histograms to find bins
-        self._bin_zvtx = TH1I('bin_zvtx', 'used to find z vtx',
-                              zvtx_nbins, zvtx_low, zvtx_high)
-        self._bin_cent = TH1I('bin_cent', 'used to find eclasses',
-                              cent_nbins, self.cent_edges)
+        self._bin_zvtx = Hist1D(*self.zvtx_bins, name='bin_zvtx',
+                                 title='used to find zvtx')
+        self._bin_cent = Hist1D(self.cent_edges, name='bin_cent',
+                                title='used to find eclasses')
 
         # Set the validation function
         # Done like this for performance
@@ -120,67 +170,115 @@ class MyPySelector(TPySelector):
         elif self.data_type == 'real':
             self.validate_track = self._validate_real_track
 
+
     @try_except
     def Process(self, entry):
         self.fChain.GetEntry(entry)
-        if not self.validate_event(entry):
-            return 1
-        if self.data_type == 'MC':
-            zvtx = self.fChain.event.zvtxMC
-            ptmax = self.fChain.event.ptmaxMC
-        if self.data_type in ['real', 'reconstructed']:
+        # Validate on the event branch level
+        if self.data_type == 'MC' or self.mc_and_recon_valid:
+            if not self.validate_event_mc():
+                return 1
+            zvtx = self.fChain.event.zvtxMC  # reconstructed zvtx is used if mc_and_rec!
+        if self.data_type in ['real', 'reconstructed'] or self.mc_and_recon_valid:
+            if not self.validate_event_rec():
+                return 1
             zvtx = self.fChain.event.zvtx
-            ptmax = self.fChain.event.ptmax
-        # there is no centMC!
+        # validate wrt number of triggers        
+        if not self.validate_event_wrt_n_triggers():
+            return 1
+
         cent = self.fChain.event.cent
 
-        # stop here if there are no triggers for sure
-        if not self.allow_0_trig and ptmax < self.trigger_inter[0]:
-            return 1
-
         trigs, assocs = self.get_triggers_assocs()
-        if not self.allow_0_trig and len(trigs) == 0:
+
+        # stop here if there are no triggers for sure, those event MUST not make it 
+        # into the pool!!!
+        if not self.allow_0_trig and len(trigs)==0:
             return 1
 
-        self.valid_counter.Fill(zvtx, 1)
+        # Good tips for numpy:
+        # www.astro.washington.edu/users/vanderplas/Astr599/notebooks/11_EfficientNumpy
+        trigs = np.asarray(trigs)
+        assocs = np.asarray(assocs)
+        """ Example data: (phi, eta, pt, weight)
+        assocs = [[ 4.9218154   0.11242714  0.57215816  1.        ]
+                  [ 2.26730394  0.60090125  0.55954134  1.        ]]
+        trigs  = [[ 4.02582455 -0.11806787  1.0537529   1.        ]]"""
 
+        # Put numpy arrays int the pool
         if self.added_to_pool(assocs):
             return 1
 
-        trig_fill = self.trig_counter.Fill
-        # assoc_fill = self.assoc_counter.Fill
+        # the trigger counter must also include events without associated tracks but with
+        # a trigger!!! Events of the pool are not included and we can stop after 
+        # increasing the counter
+        self.trig_counter.fill(cent, len(trigs))
+        self.trig_counter_weighted.fill(cent, np.sum(1.0 / trigs[:, 3]))
+        if len(assocs) == 0:
+            return 1
 
-        # fill trigger and assoc counters
-        nr_trigs = len(trigs)
-        for phi, eta, pt, w in trigs:
-            a = array('d', [phi, eta, zvtx, cent, ptmax, nr_trigs])
-            trig_fill(a)
-        # for phi, eta, pt, w in assocs:
-        #     a = array('d', [phi, eta, zvtx, cent, ptmax, nr_trigs])
-        #     assoc_fill(a, 1 / w)  # w != 0
+        cent_id = self.get_cent_id()
 
-        s_fill = self.signal.Fill
-        bg_fill = self.background.Fill
-        #cdef double trig_phi, trig_eta, assoc_phi, assoc_eta, bg_phi, bg_eta
-        #cdef int i
-        bgs_it = self.it_background_tracks()
-        for trig_phi, trig_eta, trig_pt, trig_w in trigs:
-            for assoc_phi, assoc_eta, assoc_pt, assoc_w in assocs:
-                if assoc_pt >= trig_pt:
-                    continue
-                a = array('d', [wrap(assoc_phi-trig_phi),
-                                assoc_eta-trig_eta,
-                                zvtx, cent, ptmax])
-                s_fill(a, 1.0/assoc_w)
-            # 10 bg tracks per assoc
-            for i in xrange(len(assocs)*10):
-                bg_phi, bg_eta, bg_pt, bg_w = bgs_it.next()
-                if bg_pt >= trig_pt:
-                    continue
-                a = array('d', [wrap(bg_phi - trig_phi),
-                                bg_eta - trig_eta,
-                                zvtx, cent, ptmax])
-                bg_fill(a, 1.0/bg_w)
+        # extend the all arrays to form all permutations
+        # Meshgrid gives array of arrays, so flatten them as well
+        trigs_phi_ex, assocs_phi_ex = (a.flatten() for a in
+                                       np.meshgrid(trigs[:,0], assocs[:,0]))
+        trigs_eta_ex, assocs_eta_ex = (a.flatten() for a in
+                                       np.meshgrid(trigs[:,1], assocs[:,1]))
+        trigs_pt_ex, assocs_pt_ex = (a.flatten() for a in
+                                     np.meshgrid(trigs[:,2], assocs[:,2]))
+        trigs_weight_ex, assocs_weight_ex = (a.flatten() for a in
+                                             np.meshgrid(trigs[:,3], assocs[:,3]))
+
+        dphis = assocs_phi_ex - trigs_phi_ex
+        dphis = (dphis + pi/2) % (2 * pi) - pi/2
+        detas = assocs_eta_ex - trigs_eta_ex
+        weights = 1 / (assocs_weight_ex * trigs_weight_ex)
+
+        # Filling: The array needs to be in shape (3, N)
+        # make a new array [[dphis], [detas], [zvtxs]] and 
+        # transpose to get [[dphi, deta, zvtx], ...]
+        # Example: [[ 0.89599085  0.23049501 -2.4725287 ]
+        #           [ 4.5246647   0.71896911 -2.4725287 ]]
+
+        #######   Signal   ##################
+        zvtxs = np.full(dphis.shape, zvtx, dtype=float)
+        self.signals_weighted[cent_id].fill_array(np.array(
+            [dphis, detas, zvtxs]).T, weights)
+        self.signals[cent_id].fill_array(np.array(
+            [dphis, detas, zvtxs]).T)
+
+        ### Special histograms:
+        fill_profile(self.signal_pt_profiles[cent_id], 
+                     np.array([dphis, detas, zvtxs, assocs_pt_ex]).T)
+
+        ### eta1 eta2
+        fill_profile(self.eta1eta2[cent_id],
+                     np.array([assocs_eta_ex, trigs_eta_ex, zvtxs, assocs_pt_ex]).T)
+
+        #######   Background   ################
+        bgs = self.get_background_tracks(10*len(assocs))
+
+        trigs_phi_ex, bgs_phi_ex = (a.flatten() for a in
+                                       np.meshgrid(trigs[:,0], bgs[:,0]))
+        trigs_eta_ex, bgs_eta_ex = (a.flatten() for a in
+                                       np.meshgrid(trigs[:,1], bgs[:,1]))
+        trigs_pt_ex, bgs_pt_ex = (a.flatten() for a in
+                                     np.meshgrid(trigs[:,2], bgs[:,2]))
+        trigs_weight_ex, bgs_weight_ex = (a.flatten() for a in
+                                             np.meshgrid(trigs[:,3], bgs[:,3]))
+
+        dphis = bgs_phi_ex - trigs_phi_ex
+        dphis = (dphis + pi/2) % (2 * pi) - pi/2
+        detas = bgs_eta_ex - trigs_eta_ex
+        weights = 1 / (bgs_weight_ex * trigs_weight_ex)
+        zvtxs = np.full(dphis.shape, zvtx, dtype=float)
+
+        self.backgrounds_weighted[cent_id].fill_array(np.array(
+            [dphis, detas, zvtxs]).T, weights)
+        self.backgrounds[cent_id].fill_array(np.array([dphis, detas, zvtxs]).T)
+        fill_profile(self.background_pt_profiles[cent_id],
+                     np.array([dphis, detas, zvtxs, bgs_pt_ex]).T)
 
         # replace tracks in pool
         self.replace_pool(assocs)
@@ -192,7 +290,7 @@ class MyPySelector(TPySelector):
 
     def Terminate(self):
         """currently ignoring the pt threshold part"""
-        with root_open('output_' + self.data_type + '.root',
+        with root_open(self.directory+'/output_' + self.data_type + '.root',
                        'recreate') as f:
             # write original histograms:
             f.mkdir('raw')
@@ -203,59 +301,6 @@ class MyPySelector(TPySelector):
         print 'Successfully wrote results to output_' + self.data_type + '.root'
 
     ### Analysis functions
-    def make_diff_histogram(self, name, title,
-                       axis_title=';#Delta #varphi;#Delta #eta;z_vtx;cent;pt_max'):
-        """create a n dim histogram"""
-        phi_nbins, phi_low, phi_high = self.phi_bins
-        eta_nbins, eta_low, eta_high = self.eta_bins
-        zvtx_nbins, zvtx_low, zvtx_high = self.zvtx_bins
-        cent_nbins, cent_low, cent_high = self.cent_bins  # edges are ignored
-        ptmax_nbins, ptmax_low, ptmax_high = self.ptmax_bins
-
-        tmp = THnSparseF(name,
-                         title + axis_title,
-                         5,  # dimensions
-                         array('i', [phi_nbins, eta_nbins, zvtx_nbins,
-                                     cent_nbins, ptmax_nbins]),
-                         array('d', [phi_low, eta_low,  zvtx_low,
-                                     cent_low, ptmax_low]),
-                         array('d', [phi_high, eta_high, zvtx_high,
-                                     cent_high, ptmax_high]))
-        # Set centrality bin edegs
-        tmp.SetBinEdges(3, self.cent_edges)
-        tmp.Sumw2()
-        return tmp
-
-    def make_counter_histogram(self, name, title,
-                               axis_title=(';#Delta #varphi;#Delta #eta;'
-                                           'z_vtx;cent;pt_max;n_trig;p_t')):
-        """create a n dim histogram"""
-        phi_nbins, phi_low, phi_high = 36, 0, 2*pi
-        eta_nbins, eta_low, eta_high = 32, -0.8, 0.8
-        # pt bins are from analysis note
-        # pt_nbins = 22
-        # pt_edges = array('d', (list(np.arange(0.5, 1, 0.1))
-        #                        + list(np.arange(1, 4, 0.25))
-        #                        + list(np.arange(4, 5, 0.5))
-        #                        + list(range(5, 9, 1))))
-        zvtx_nbins, zvtx_low, zvtx_high = self.zvtx_bins
-        cent_nbins, fake_low, fake_high = self.cent_bins  # edges are ignored
-        ptmax_nbins, ptmax_low, ptmax_high = self.ptmax_bins
-        tmp = THnSparseF(name,
-                         title + axis_title,
-                         6,  # dimensions
-                         array('i', [phi_nbins, eta_nbins,  zvtx_nbins,
-                                     cent_nbins, ptmax_nbins, self.n_tracks_nbins]),
-                         array('d', [phi_low, eta_low, zvtx_low,
-                                     fake_low, ptmax_low, fake_low]),
-                         array('d', [phi_high, eta_high, zvtx_high,
-                                     fake_high, ptmax_high, fake_high]))
-        # Set centrality bin edegs
-        tmp.SetBinEdges(3, self.cent_edges)
-        tmp.SetBinEdges(5, self.n_tracks_edges)
-        # tmp.SetBinEdges(6, pt_edges)
-        tmp.Sumw2()
-        return tmp
 
     def get_triggers_assocs(self):
         """Ret ([[trig_phi, trig_eta, pt, w]], [[assoc_phi, assoc_eta, pt, w]])
@@ -264,9 +309,6 @@ class MyPySelector(TPySelector):
         lower_trig, upper_trig = self.trigger_inter
         lower_assoc, upper_assoc = self.assoc_inter
         triggers, assocs = [], []
-        single_track_correction = self.single_track_correction
-        if single_track_correction:
-            weight_hist = self.single_track_weight
         if self.data_type == 'MC':
             tracks = self.get_tracks_generator('MC')
             for track in tracks:
@@ -274,18 +316,11 @@ class MyPySelector(TPySelector):
                     continue
                 pt = track.ptMC
                 if (lower_assoc < pt < upper_assoc):
-                    zvtx = self.fChain.event.zvtxMC
-                    if single_track_correction:
-                        w = weight_hist.GetBinContent(
-                            weight_hist.GetBin(
-                                array('d',
-                                      [track.phiMC, track.etaMC, zvtx, pt])))
-                        if w < 0.01:  # dont know if int or float
-                            continue
-                    else:
-                        w = 1
+                    # MC efficiency is always 1
+                    w = 1
                     assocs.append([track.phiMC, track.etaMC, pt, w])
-                if (lower_trig < pt < upper_trig):
+                elif (lower_trig < pt < upper_trig):
+                    # MC efficiency is always 1
                     w = 1
                     triggers.append([track.phiMC, track.etaMC, pt, w])
         elif self.data_type in ['real', 'reconstructed']:
@@ -295,90 +330,116 @@ class MyPySelector(TPySelector):
                     continue
                 pt = track.pt
                 if (lower_assoc < pt < upper_assoc):
-                    zvtx = self.fChain.event.zvtx
-                    if single_track_correction:
-                        w = weight_hist.GetBinContent(
-                            weight_hist.GetBin(
-                                array('d', [track.phi, track.eta, zvtx, pt])))
-                        if w < 0.01:  # dont know if int or float
-                            continue
-                    else:
-                        w = 1
+                    w = self.get_efficiency_for_track(track)
+                    if not w:
+                        self.no_eff_avail_counter.fill(1)
+                        continue
                     assocs.append([track.phi, track.eta, pt, w])
-                if (lower_trig < pt < upper_trig):
-                    w = 1
+                elif (lower_trig < pt <upper_trig):
+                    w = self.get_efficiency_for_track(track)
+                    if not w:
+                        self.no_eff_avail_counter.fill(1)
+                        continue
                     triggers.append([track.phi, track.eta, pt, w])
         return (triggers, assocs)
 
-    def it_background_tracks(self):
-        """Iterator for background tracks"""
+    def get_efficiency_for_track(self, track):
+        """return the single track efficiency (weight) of a given track
+        return False if no value is available"""
+        w = self.single_track_weight.GetBinContent(
+            self.single_track_weight.FindBin(self.fChain.event.zvtx ,track.pt))
+        if w < 0.01:  # dont know if int or float
+            return False
+        return w
+
+    def get_background_tracks(self, n):
+        """Return n fitting background tracks"""
         zvtx = self.get_zvtx_id()
         cent = self.get_cent_id()
         pool = self.pool[zvtx][cent]
-        while True:
-            np.random.shuffle(pool)
-            for track in pool:
-                yield track
+        np.random.shuffle(pool)
+        return pool[:n]    
 
-    def validate_event(self, entry):
+
+    def validate_event_mc(self):
         """Validate event on event level"""
         if not (self.fChain.event.trig & self.trigger):
             return False
         if self.fChain.event.vtxstatus < 1:
             return False
-        if self.data_type == 'MC':
-            if not (-10 < self.fChain.event.zvtxMC < 10):
-                return False
-            if self.fChain.event.ptmaxMC < self.pt_threshold:
-                return False
-            if (self.events_have_reconstructed_triggers and
-                    not self._has_recon_trigger(entry)):
-                return False
-            if (self.events_have_one_mc_trigger
-                    and not self._has_exactly_one_mc_trigger(entry)):
-                return False
 
-        elif self.data_type in ['real', 'reconstructed']:
-            if not (-10 < self.fChain.event.zvtx < 10):
+        if not (-10 < self.fChain.event.zvtxMC < 10):
+            return False
+        if self.pt_threshold < 0.0:
+            # The soft case
+            if self.fChain.event.ptmaxMC > (-1)*self.pt_threshold:
                 return False
-            if self.fChain.event.ptmax < self.pt_threshold:
-                return False
-            if (self.data_type == 'reconstructed'
-                    and self.events_have_one_mc_trigger
-                    and not self._has_exactly_one_mc_trigger(entry)):
+        else:
+            # the hard case
+            if self.fChain.event.ptmaxMC < self.pt_threshold:
                 return False
         return True
 
-    def _has_recon_trigger(self, entry):
-        """check if at least one reconstructed track is presenten"""
-        tracks = self.get_tracks_generator('reconstructed')
-        lower_trig, upper_trig = self.trigger_inter
-        for track in tracks:
-            if not self._validate_recon_track(track):
-                continue
-            pt = track.pt
-            if (lower_trig < pt < upper_trig):
-                return True
-        else:
+    def validate_event_rec(self):
+        """Validate event on event level. This is for MC_rec and real reconstructed"""
+        if not (self.fChain.event.trig & self.trigger):
+            return False
+        if self.fChain.event.vtxstatus < 1:
             return False
 
-    def _has_exactly_one_mc_trigger(self, entry):
-        """check if there is exactly on mc trigger"""
-        tracks = self.get_tracks_generator('MC')
+        if not (-10 < self.fChain.event.zvtx < 10):
+            return False
+        if self.pt_threshold < 0.0:
+            # The soft case
+            if self.fChain.event.ptmax > (-1)*self.pt_threshold:
+                return False
+        else:
+            # the hard case
+            if self.fChain.event.ptmax < self.pt_threshold:
+                return False
+        return True
+
+    def validate_event_wrt_n_triggers(self):
+        """Validate the event with respect to optinally given selections regarding
+        the event's number of triggers"""
+        if self.events_have_recon_triggers:
+            if self.get_n_triggers_for_type('reconstructed') < 1:
+                return False
+        if self.events_have_one_mc_trigger:
+            if 1 != self.get_n_triggers_for_type('MC'):
+                return False
+        if self.mc_and_recon_valid:
+            if ((self.get_n_triggers_for_type('MC') < 1) or
+                (self.get_n_triggers_for_type('reconstructed') <1)):
+                # on or the other does not have valid events
+                return False
+        return True
+
+
+    def get_n_triggers_for_type(self, data_type):
+        """Return the number of triggers for given type"""
+        tracks = self.get_tracks_generator(data_type)
         lower_trig, upper_trig = self.trigger_inter
         triggers = 0
-        for track in tracks:
-            if not self._validate_mc_track(track):
-                continue
-            pt = track.ptMC
-            if (lower_trig < pt < upper_trig):
-                triggers += 1
-                if triggers > 1:
-                    return False
-        if triggers == 1:
-            return True
-        else:
-            return False
+        if data_type == 'MC':
+            validator = self._validate_mc_track 
+            for track in tracks:
+                if not validator(track):
+                    continue
+                pt = track.ptMC
+                if (lower_trig < pt < upper_trig):
+                    triggers += 1
+
+        elif data_type == 'reconstructed':
+            validator = self._validate_recon_track
+            for track in tracks:
+                if not validator(track):
+                    continue
+                pt = track.pt 
+                if (lower_trig < pt < upper_trig):
+                    triggers += 1
+        return triggers
+
 
     def added_to_pool(self, assocs):
         """See if the fitting z-vtx pool is already filled"""
@@ -386,9 +447,16 @@ class MyPySelector(TPySelector):
         cent = self.get_cent_id()
         if len(self.pool[zvtx][cent]) > self.pool_size:
             return False
+        elif len(assocs) == 0:
+            # cannot concatenate an empty array, but this event class is not full yet,
+            # thus return True
+            return True
         else:
-            # [self.bg_debug.Fill(t[0], t[1]) for t in assocs]
-            self.pool[zvtx][cent] += assocs
+            if not len(self.pool[zvtx][cent]):
+                self.pool[zvtx][cent]  = assocs
+            else:
+                self.pool[zvtx][cent] = np.concatenate((self.pool[zvtx][cent], assocs),
+                                                       axis=0)
             return True
 
     def replace_pool(self, assocs):
@@ -410,6 +478,25 @@ class MyPySelector(TPySelector):
         "Return the event class (bin - 1) for the current event"""
         return self._bin_cent.FindBin(self.fChain.event.cent) - 1
 
+    def is_track_at_tpc_border(self, track):
+        """Return true if the track is close to the TPC border. "Too close is defined
+        as an efficiency < 0.65 which is rather restrictive."""
+        # find the bin (both histograms are identical)
+        min_eff = 0.65
+        if self.data_type == 'MC':
+            bin = self.eff_sector_neg.find_bin(track.ptMC, (track.phiMC + pi/18) % (pi/9))
+            q = track.qMC
+        else:
+            bin = self.eff_sector_neg.find_bin(track.pt, (track.phi + pi/18) % (pi/9))
+            q = track.q
+        if q >= 1:
+            if min_eff > self.eff_sector_pos.get_bin_content(bin):
+                return True
+        elif q <= -1:
+            if min_eff > self.eff_sector_neg.get_bin_content(bin):
+                return True
+        return False
+
     def validate_track(self):
         """over write this function in SlaveBegin()"""
         pass
@@ -417,6 +504,11 @@ class MyPySelector(TPySelector):
     def _validate_mc_track(self, track):
         """return True if the track is valid"""
         if (track.qMC == 0 or (abs(track.etaMC) > 0.8)):
+            return False
+        if self.exclude_tpc_border and self.is_track_at_tpc_border(track):
+            return False
+        # Diff charges? if track and requirement have not same sign the mult is negative
+        if self.only_charge and self.only_charge*track.qMC < 0:
             return False
         return True
 
@@ -428,6 +520,11 @@ class MyPySelector(TPySelector):
         if abs(track.dcaxy) > self.max_dist_vtx_xy:
             return False
         if abs(track.dcaz) > self.max_dist_vtx_z:
+            return False
+        if self.exclude_tpc_border and self.is_track_at_tpc_border(track):
+            return False
+        # Diff charges? if track and requirement have not same sign the mult is negative
+        if self.only_charge and self.only_charge*track.q < 0:
             return False
         return True
 
@@ -474,14 +571,3 @@ class MyPySelector(TPySelector):
             self.fChain.SetBranchStatus('trackmc.etaMC', 1)
             self.fChain.SetBranchStatus('trackmc.ptMC', 1)
             self.fChain.SetBranchStatus('trackmc.qMC', 1)
-
-
-def wrap(x):
-    """wrap [rad] angle to [-PI/2..3PI/2)"""
-    pi = 3.141592653589793
-    return (x + pi/2) % (2 * pi) - pi/2
-
-
-#MyPySelector.fill_histograms = process.fill_histograms
-#MyPySelector.get_triggers_assocs = process.get_triggers_assocs
-#MyPySelector.it_background_tracks = process.it_background_tracks
